@@ -5,7 +5,7 @@ class MessengerBotController < ActionController::Base
     if text == "おはよう"
       sender.reply({ text: "おはよう" })
     else
-      sender.reply({"私はおはようしかいえません"})
+      sender.reply({text: "私はおはようしかいえません"})
     end
   end
 

@@ -44,13 +44,18 @@ class MessengerBotController < ActionController::Base
                 "buttons":[
                     {
                         "type":"postback",
-                        "title":"何言ってるんだよ、記念日なら昨日終わっただろ（愛人）",
+                        "title":"記念日なら昨日終わっただろ",
                         "payload":"1"
                     },
                     {
                         "type":"postback",
-                        "title":"楽しみにしといて！僕が全部準備しておくから！",
+                        "title":"君とであった蜂蜜公園でデート",
                         "payload":"2"
+                    },
+                    {
+                        "type":"postback",
+                        "title":"僕が全部準備しておくから！",
+                        "payload":"3"
                     }
                 ]
             }
@@ -81,7 +86,7 @@ class MessengerBotController < ActionController::Base
       
       when "2"
         sender.reply({ text: "愛してる" })
-      when "1"
+      when "1","3"
         sender.reply({ text: "別れましょう" })
     end
   end

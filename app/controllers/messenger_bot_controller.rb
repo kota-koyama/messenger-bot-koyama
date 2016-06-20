@@ -1,8 +1,10 @@
 class MessengerBotController < ActionController::Base
+@@message_count = 0
   def message(event, sender)
       text = event['message']['text']
     # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
     if text == "おはよう"
+      @@message_count += 1
       sender.reply({ text: "おはよう" })
     else
       sender.reply({ "attachment":{

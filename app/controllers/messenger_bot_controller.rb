@@ -49,18 +49,8 @@ class MessengerBotController < ActionController::Base
                     },
                     {
                         "type":"postback",
-                        "title":"やややややばい！わすれてた！",
-                        "payload":"2"
-                    },
-                    {
-                        "type":"postback",
-                        "title":"君とであった蜂蜜公園でピクニックしよう。",
-                        "payload":"3"
-                    },
-                    {
-                        "type":"postback",
                         "title":"楽しみにしといて！僕が全部準備しておくから！",
-                        "payload":"4"
+                        "payload":"2"
                     }
                 ]
             }
@@ -89,9 +79,10 @@ class MessengerBotController < ActionController::Base
          }
       })
       
-      when "3"
+      when "2"
         sender.reply({ text: "愛してる" })
-      
+      when "1"
+        sender.reply({ text: "別れましょう" })
     end
   end
 end

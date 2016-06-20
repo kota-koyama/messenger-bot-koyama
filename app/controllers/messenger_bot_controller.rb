@@ -28,10 +28,6 @@ class MessengerBotController < ActionController::Base
     end
     
   end
-  
-  def choice(event, sender)
-    
-  end
 
   def delivery(event, sender)
   end
@@ -44,7 +40,7 @@ class MessengerBotController < ActionController::Base
             "type":"template",
             "payload":{
                 "template_type":"button",
-                "text":"ええ、はじめましょうよ？",
+                "text":"結婚記念日どうしようか？",
                 "buttons":[
                     {
                         "type":"postback",
@@ -76,7 +72,7 @@ class MessengerBotController < ActionController::Base
             "type":"template",
             "payload":{
                 "template_type":"button",
-                "text":"ええ、はじめましょうよ？",
+                "text":"えぇ…はじめましょうよ？",
                 "buttons":[
                     {
                         "type":"postback",
@@ -92,12 +88,10 @@ class MessengerBotController < ActionController::Base
             }
          }
       })
+      
       when "3"
         sender.reply({ text: "愛してる" })
-        
-      when"1","2","4"
-        sender.reply({ text: "別れましょう" })
-        
+      
     end
   end
 end

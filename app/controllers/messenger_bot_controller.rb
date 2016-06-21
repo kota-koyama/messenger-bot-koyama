@@ -110,11 +110,11 @@ class MessengerBotController < ActionController::Base
           sender.reply({ text: "愛してる" })
         when "1"
           sender.reply({ text: "別れましょう" })
-        when"3"
+        when "3"
           sender.reply({"attachment":{
             "type":"image",
             "payload":{
-                "url":"[http://jinfo.jp/wp-content/uploads/2014/12/kasumi05.jpeg]"
+            "filedata":"[kasumi05.jpeg]"
                       }
                   }
          })

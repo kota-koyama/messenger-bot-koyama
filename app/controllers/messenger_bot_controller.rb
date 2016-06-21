@@ -114,7 +114,7 @@ class MessengerBotController < ActionController::Base
           sender.reply({"attachment":{
             "type":"image",
             "payload":{
-                "url":"[kasumi05.jpeg]"
+                "url":"[http://jinfo.jp/wp-content/uploads/2014/12/kasumi05.jpeg]"
                       }
                   }
          })

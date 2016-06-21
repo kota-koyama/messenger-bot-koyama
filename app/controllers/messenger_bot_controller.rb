@@ -29,6 +29,19 @@ class MessengerBotController < ActionController::Base
                     })
     end
     
+    bing_image = BingSearch.image(text, limit: 10).shuffle[0]
+            if bing_image.nil?
+                sender.reply({ text: "画像が見つかりませんでした" })
+            else
+                sender.reply({ "attachment": {
+                "type": "image",
+                "payload": {
+                  "url": bing_image.media_url
+                          }
+                                              }
+                            })
+            end
+    
   end
 
   def delivery(event, sender)
@@ -93,26 +106,8 @@ class MessengerBotController < ActionController::Base
     end
   end
   
-  require 'bing-search'
-
-  BingSearch.account_key = ENV["94d986b2a4e84fee94a9cedd0e9f1084"]
-  
-  def bot_response(sender, text)
-    request_endpoint = "https://graph.facebook.com/v2.6/me/messages?access_token=#{ENV["EAAYw9ZC4mz60BABzlBXsBTB45ooS6kvBngD6Wmd5tFjAuMGK84VaOR5mS8MWBpuRT87GpvSr5oYUHifUb9xnR7ZAIp5WeuVyaXPQ4OSX5EU73qkhEZCwpJVZBdakNhZC1x3SfHsATfauE2eiZB58ig3jDQOexzZCXgWwO7ncIIwSQZDZD"]}"
-    request_body =
-      if text =~ /(.+)\s+画像/
-        bing_image = BingSearch.image($&, limit: 10).shuffle[0]
-        if bing_image.nil?
-          text_message_request_body(sender, "残念、画像は見つかりませんでした")
-        else
-          image_url_message_request_body(sender, bing_image.media_url)
-        end
-      else
-        text_message_request_body(sender, text)
-      end
-  
-      # 略
-  end
+  BingSearch.account_key = BingAPIKEY
+            
   
   def image_url_message_request_body(sender, url)
     {

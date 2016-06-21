@@ -7,7 +7,7 @@ class MessengerBotController < ActionController::Base
       @@message_count += 1
       sender.reply({ text: "おはよう#{@@message_count}" })
       
-      elsif text.end_with?("画像？")  
+    elsif text.end_with?("画像？")  
             BingSearch.account_key = "94d986b2a4e84fee94a9cedd0e9f1084"
             sender.reply({ text: "#{text.chop.chop.chop}" })
             bing_image = BingSearch.image(text.chop.chop.chop, limit: 30).shuffle[0]
@@ -22,7 +22,6 @@ class MessengerBotController < ActionController::Base
                                               }
                             })
             end
-            
     else
       sender.reply({ "attachment":{
                           "type":"template",
@@ -47,9 +46,22 @@ class MessengerBotController < ActionController::Base
                     
       
     end
-    
-   
-    
+  end
+
+  def image_url_message_request_body(sender, url)
+    {
+      recipient: {
+        id: sender
+      },
+      message: {
+        attachment: {
+          type: "image",
+          payload: {
+            url: url
+          }
+        }
+      }
+    }.to_json
   end
 
   def delivery(event, sender)

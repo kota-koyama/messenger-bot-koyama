@@ -6,6 +6,23 @@ class MessengerBotController < ActionController::Base
     if text == "おはよう"
       @@message_count += 1
       sender.reply({ text: "おはよう#{@@message_count}" })
+      
+      elsif text.end_with?("画像？")  
+            BingSearch.account_key = "94d986b2a4e84fee94a9cedd0e9f1084"
+            sender.reply({ text: "#{text.chop.chop.chop}" })
+            bing_image = BingSearch.image(text.chop.chop.chop, limit: 30).shuffle[0]
+            if bing_image.nil?
+                sender.reply({ text: "画像が見つかりませんでした" })
+            else
+                sender.reply({ "attachment": {
+                "type": "image",
+                "payload": {
+                  "url": bing_image.media_url
+                          }
+                                              }
+                            })
+            end
+            
     else
       sender.reply({ "attachment":{
                           "type":"template",
@@ -27,20 +44,11 @@ class MessengerBotController < ActionController::Base
                           }
                        }
                     })
+                    
+      
     end
     
-    bing_image = BingSearch.image(text, limit: 10).shuffle[0]
-            if bing_image.nil?
-                sender.reply({ text: "画像が見つかりませんでした" })
-            else
-                sender.reply({ "attachment": {
-                "type": "image",
-                "payload": {
-                  "url": bing_image.media_url
-                          }
-                                              }
-                            })
-            end
+   
     
   end
 
@@ -106,23 +114,5 @@ class MessengerBotController < ActionController::Base
     end
   end
   
-  BingSearch.account_key = BingAPIKEY
-            
-  
-  def image_url_message_request_body(sender, url)
-    {
-      recipient: {
-        id: sender
-      },
-      message: {
-        attachment: {
-          type: "image",
-          payload: {
-            url: url
-          }
-        }
-      }
-    }.to_json
-  end
  
 end

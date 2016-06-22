@@ -16,7 +16,7 @@ class MessengerBotController < ActionController::Base
                             "elements":[
                                 {
                                     "title":"こんにちは！案内人のかんなです！",
-                                    "image_url":"http://kanna77.blog.so-net.ne.jp/_images/blog/_cf4/kanna77/980-kanna-003_x1000.jpg",
+                                    "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
                                     "subtitle":"DAC社内恋愛ゲームを始めましょう！",
                                     "buttons":[
                                         {

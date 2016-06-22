@@ -13,7 +13,7 @@ class MessengerBotController < ActionController::Base
                           "type":"template",
                           "payload":{
                               "template_type":"button",
-                              "text":"大人の恋愛ゲームを始めますか？",
+                              "text":"DAC社内恋愛物語を始めましょう！",
                               "buttons":[
                                   {
                                       "type":"postback",

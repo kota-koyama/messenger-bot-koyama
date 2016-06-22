@@ -40,21 +40,7 @@ class MessengerBotController < ActionController::Base
     end
   end
 
-  def image_url_message_request_body(sender, url)
-    {
-      recipient: {
-        id: sender
-      },
-      message: {
-        attachment: {
-          type: "image",
-          payload: {
-            url: url
-          }
-        }
-      }
-    }.to_json
-  end
+  
 
   def delivery(event, sender)
   end

@@ -64,31 +64,53 @@ class MessengerBotController < ActionController::Base
     case payload
     
        when "OVER" 
+         sender.reply({ text: "それじゃぁ、好きなタイプの女の子を選んでね！" })
          sender.reply({ "attachment":{
-              "type":"template",
-              "payload":{
-                  "template_type":"button",
-                  "text":"結婚記念日どうしようか？",
-                  "buttons":[
-                      {
-                          "type":"postback",
-                          "title":"記念日なら昨日終わっただろ",
-                          "payload":"1"
-                      },
-                      {
-                          "type":"postback",
-                          "title":"君とであった蜂蜜公園でデート",
-                          "payload":"2"
-                      },
-                      {
-                          "type":"postback",
-                          "title":"僕が全部準備しておくから！",
-                          "payload":"3"
-                      }
-                  ]
-              }
-           }
-        })
+                        "type":"template",
+                        "payload":{
+                            "template_type":"generic",
+                            "elements":[
+                                {
+                                    "title":"さとみ",
+                                    "image_url":"http://cdn-ak.f.st-hatena.com/images/fotolife/R/ROUTE53/20150515/20150515181625.jpg",
+                                    "subtitle":"ひたすらかわいい！たまに計算高いけど間接キスできたらこっちのもの！",
+                                    "buttons":[
+                                        {
+                                            "type":"postback",
+                                            "title":"この子にする！",
+                                            "payload":"satomi_choice"
+                                        }
+                                        
+                                    ]
+                                },
+                                {
+                                    "title":"はるか",
+                                    "image_url":"http://blogs.c.yimg.jp/res/blog-cd-9b/gogolastsamurai/folder/1559642/86/51099586/img_0",
+                                    "subtitle":"とんでもない天然…しかし、本気になったとき何でもすごい！",
+                                    "buttons":[
+                                        {
+                                            "type":"postback",
+                                            "title":"この子にする",
+                                            "payload":"haruka_choice"
+                                        }               
+                                    ]
+                                },
+                                {
+                                    "title":"すず",
+                                    "image_url":"http://contents.oricon.co.jp/photo/img/1000/1794/detail/img660/1458092117458.jpg",
+                                    "subtitle":"とてもかわいい妹系！どうやってDACに入社したのか・・・",
+                                    "buttons":[
+                                        {
+                                            "type":"postback",
+                                            "title":"この子にする",
+                                            "payload":"suzu_choice"
+                                        }               
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                })
         
       when "UNDER"
         sender.reply({"attachment":{
@@ -135,60 +157,7 @@ class MessengerBotController < ActionController::Base
                       }
                   }
          })
-         sender.reply({ "attachment":{
-                        "type":"template",
-                        "payload":{
-                            "template_type":"generic",
-                            "elements":[
-                                {
-                                    "title":"【肩こり対策】(1)腕・胸・背中のストレッチ",
-                                    "image_url":"http://imgcp.aacdn.jp/img-a/auto/auto/aa/gm/article/1/9/5/4/2/7/ude.jpg",
-                                    "subtitle":"片側の腕を後頭部で曲げる。できるだけ肘を曲げるように。肘を反対側の手で後頭部に引っ張る。後頭部で肘を後ろに押すようにする。",
-                                    "buttons":[
-                                        {
-                                            "type":"postback",
-                                            "title":"腰痛対策へ",
-                                            "payload":"stretching_hip"
-                                        },{
-                                            "type":"postback",
-                                            "title":"足のむくみ対策へ",
-                                            "payload":"stretching_leg"
-                                        },{
-                                            "type":"web_url",
-                                            "url":"http://allabout.co.jp/gm/gc/195427/",
-                                            "title":"詳細をHPで見る"
-                                        }
-                                        
-                                    ]
-                                },
-                                {
-                                    "title":"【肩こり対策】(2)背中のストレッチ",
-                                    "image_url":"http://imgcp.aacdn.jp/img-a/auto/auto/aa/gm/article/1/9/5/4/2/7/senaka.jpg",
-                                    "subtitle":"背筋を伸ばして座り、両手でシャツの襟を持つ。両肘を体の正面でつける。首の力を抜いて前へ倒し首の後ろを伸ばす。背中を丸める。この時に肘が下を向くように。",
-                                    "buttons":[
-                                        {
-                                            "type":"web_url",
-                                            "url":"http://allabout.co.jp/gm/gc/195427/",
-                                            "title":"詳細をHPで見る"
-                                        }               
-                                    ]
-                                },
-                                {
-                                    "title":"【肩こり対策】(3)胸のストレッチ",
-                                    "image_url":"http://imgcp.aacdn.jp/img-a/auto/auto/aa/gm/article/1/9/5/4/2/7/mune.jpg",
-                                    "subtitle":"背筋を伸ばして腰の後ろに手を当て両手を組む。両肘を閉じる。この時に肩が上がらないように。首の力を抜いてアゴを上に。こうすると首筋もストレッチできる。",
-                                    "buttons":[
-                                        {
-                                            "type":"web_url",
-                                            "url":"http://allabout.co.jp/gm/gc/195427/",
-                                            "title":"詳細をHPで見る"
-                                        }               
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                })
+        
     end
   end
   

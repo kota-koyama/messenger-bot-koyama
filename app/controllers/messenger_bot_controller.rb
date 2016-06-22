@@ -91,6 +91,13 @@ class MessengerBotController < ActionController::Base
         })
         
       when "UNDER"
+        sender.reply({"attachment":{
+            "type":"image",
+            "payload":{
+            "url":"https://pbs.twimg.com/profile_images/705260772243320832/cLl8XRdV.jpg"
+                      }
+                  }
+         })
         sender.reply({ "attachment":{
               "type":"template",
               "payload":{

@@ -114,7 +114,7 @@ class MessengerBotController < ActionController::Base
           sender.reply({"attachment":{
             "type":"image",
             "payload":{
-            "filedata":"[kasumi05.jpeg]"
+            "url":"http://kanna77.blog.so-net.ne.jp/_images/blog/_cf4/kanna77/980-kanna-003_x1000.jpg"
                       }
                   }
          })

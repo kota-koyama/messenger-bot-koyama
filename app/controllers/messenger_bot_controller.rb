@@ -9,26 +9,32 @@ class MessengerBotController < ActionController::Base
       
    
     else
-      sender.reply({ "attachment":{
-                          "type":"template",
-                          "payload":{
-                              "template_type":"button",
-                              "text":"DAC社内恋愛物語を始めましょう！",
-                              "buttons":[
-                                  {
-                                      "type":"postback",
-                                      "title":"はい",
-                                      "payload":"OVER"
-                                  },
-                                  {
-                                      "type":"postback",
-                                      "title":"いいえ",
-                                      "payload":"UNDER"
+     sender.reply({ "attachment":{
+                        "type":"template",
+                        "payload":{
+                            "template_type":"generic",
+                            "elements":[
+                                {
+                                    "title":"こんにちは！案内人のかんなです！",
+                                    "image_url":"http://imgcp.aacdn.jp/img-a/auto/auto/aa/gm/article/1/9/5/4/2/7/ude.jpg",
+                                    "subtitle":"DAC社内恋愛ゲームを始めましょう！",
+                                    "buttons":[
+                                        {
+                                            "type":"postback",
+                                            "title":"はい",
+                                            "payload":"OVER"
+                                        },{
+                                            "type":"postback",
+                                            "title":"いいえ",
+                                            "payload":"UNDER"
+                                        }
+                                        
+                                    ]
                                   }
-                              ]
-                          }
-                       }
-                    })
+                                ]
+                              }
+                            }
+                          })
                     
       
     end
@@ -111,6 +117,10 @@ class MessengerBotController < ActionController::Base
         when "1"
           sender.reply({ text: "別れましょう" })
         when "3"
+          
+          
+                        
+                              
          sender.reply({"attachment":{
             "type":"image",
             "payload":{

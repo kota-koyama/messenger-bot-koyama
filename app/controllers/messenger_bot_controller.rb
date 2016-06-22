@@ -77,7 +77,7 @@ class MessengerBotController < ActionController::Base
                                     "buttons":[
                                         {
                                             "type":"postback",
-                                            "title":"この子にする！",
+                                            "title":"さとみ一択！",
                                             "payload":"satomi_choice"
                                         }
                                         
@@ -85,12 +85,12 @@ class MessengerBotController < ActionController::Base
                                 },
                                 {
                                     "title":"はるか",
-                                    "image_url":"http://blogs.c.yimg.jp/res/blog-cd-9b/gogolastsamurai/folder/1559642/86/51099586/img_0",
+                                    "image_url":"http://img.laughy.jp/12186/default_7610bda4c74c6d51f83617e318f8e096.jpg",
                                     "subtitle":"とんでもない天然…しかし、本気になったとき何でもすごい！",
                                     "buttons":[
                                         {
                                             "type":"postback",
-                                            "title":"この子にする",
+                                            "title":"はるか一択！",
                                             "payload":"haruka_choice"
                                         }               
                                     ]
@@ -102,7 +102,7 @@ class MessengerBotController < ActionController::Base
                                     "buttons":[
                                         {
                                             "type":"postback",
-                                            "title":"この子にする",
+                                            "title":"すず一択！",
                                             "payload":"suzu_choice"
                                         }               
                                     ]

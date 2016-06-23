@@ -15,43 +15,55 @@ class MessengerBotController < ActionController::Base
     end
     
     # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-    if text == "おはよう"
-      @@message_count += 1
-      sender.reply({ text: "おはよう#{@@message_count}" })
-     
-   
-    elsif text == "かんな！"
-     sender.reply({ "attachment":{
-                        "type":"template",
-                        "payload":{
-                            "template_type":"generic",
-                            "elements":[
-                                {
-                                    "title":"こんにちは！案内人のかんなです！",
-                                    "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
-                                    "subtitle":"DAC社内恋愛ゲームを始めましょう！",
-                                    "buttons":[
-                                        {
-                                            "type":"postback",
-                                            "title":"はい",
-                                            "payload":"OVER"
-                                        },{
-                                            "type":"postback",
-                                            "title":"いいえ",
-                                            "payload":"UNDER"
+    if Userdatum.find_by(girl: girl).nil?
+          if text == "おはよう"
+            @@message_count += 1
+            sender.reply({ text: "おはよう#{@@message_count}" })
+           
+         
+          elsif text == "かんな！"
+           sender.reply({ "attachment":{
+                              "type":"template",
+                              "payload":{
+                                  "template_type":"generic",
+                                  "elements":[
+                                      {
+                                          "title":"こんにちは！案内人のかんなです！",
+                                          "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
+                                          "subtitle":"DAC社内恋愛ゲームを始めましょう！",
+                                          "buttons":[
+                                              {
+                                                  "type":"postback",
+                                                  "title":"はい",
+                                                  "payload":"OVER"
+                                              },{
+                                                  "type":"postback",
+                                                  "title":"いいえ",
+                                                  "payload":"UNDER"
+                                              }
+                                              
+                                          ]
                                         }
-                                        
-                                    ]
+                                      ]
+                                    }
                                   }
-                                ]
-                              }
-                            }
-                          })
-                    
-      else 
-        sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
+                                })
+                          
+            else 
+              sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
+            
+            end
+            
+      else
+        if text == "こんにちは"
+          sender.reply({ text: "こんにちは！" })
+          
+        else
+          sender.reply({ text: "どうしたの？" })
+        end
       
-    end
+      end
+          
   end
 
   

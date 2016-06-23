@@ -2,12 +2,21 @@ class MessengerBotController < ActionController::Base
 @@message_count = 0
   def message(event, sender)
       text = event['message']['text']
-     
+      sender_id = event['sender']['id']
+    
+    if Userdatum.find_by(sender_id: sender_id).nil?
+      @userdata = Userdatum.new
+      @userdata.sender_id = sender_id
+      @userdata.save
+    else
+      @userdata = Userdatum.find_by(sender_id: sender_id)
+    end
+    
     # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
     if text == "おはよう"
       @@message_count += 1
       sender.reply({ text: "おはよう#{@@message_count}" })
-      
+     
    
     else
      sender.reply({ "attachment":{
@@ -47,7 +56,9 @@ class MessengerBotController < ActionController::Base
   end
 
   def postback(event, sender)
+    @userdata = Userdatum.find_by(sender_id: sender_id)
     payload = event["postback"]["payload"]
+    
     case payload
     
        when "OVER" 
@@ -127,6 +138,21 @@ class MessengerBotController < ActionController::Base
               }
            }
         })
+        
+        when "satomi_choice"
+          @userdata.girl = "satomi"
+          sender.reply({ text: "#{@userdata.girl}" })
+          @userdata.save
+          
+        when "haruka_choice"
+          @userdata.girl = "haruka"
+          sender.reply({ text: "#{@userdata.girl}" })
+          @userdata.save
+          
+        when "suzu_choice"
+          @userdata.girl = "suzu"
+          sender.reply({ text: "#{@userdata.girl}" })
+          @userdata.save
         
         when "2"
           sender.reply({ text: "愛してる" })

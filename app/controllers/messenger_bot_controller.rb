@@ -58,6 +58,7 @@ class MessengerBotController < ActionController::Base
   end
 
   def postback(event, sender)
+    sender_id = event['sender']['id']
     if Userdatum.find_by(sender_id: sender_id).nil?
       @userdata = Userdatum.new
       @userdata.sender_id = sender_id

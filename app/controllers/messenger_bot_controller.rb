@@ -59,15 +59,8 @@ class MessengerBotController < ActionController::Base
 
   def postback(event, sender)
     sender_id = event['sender']['id']
-    if Userdatum.find_by(sender_id: sender_id).nil?
-      @userdata = Userdatum.new
-      @userdata.sender_id = sender_id
-      @userdata.save
-      sender.reply({ text: "新規設定に回ってる２" })
-    else
-      @userdata = Userdatum.find_by(sender_id: sender_id)
-      sender.reply({ text: "ログイン通２" })
-    end
+     @userdata = Userdatum.find_by(sender_id: sender_id)
+    
     payload = event["postback"]["payload"]
     
     case payload
@@ -151,17 +144,17 @@ class MessengerBotController < ActionController::Base
         })
         
         when "satomi_choice"
-          @userdata.girl = "satomi"
+          @userdata.girl = "さとみ"
           sender.reply({ text: "#{@userdata.girl}" })
           @userdata.save
           
         when "haruka_choice"
-          @userdata.girl = "haruka"
+          @userdata.girl = "はるか"
           sender.reply({ text: "#{@userdata.girl}" })
           @userdata.save
           
         when "suzu_choice"
-          @userdata.girl = "suzu"
+          @userdata.girl = "すず"
           sender.reply({ text: "#{@userdata.girl}" })
           @userdata.save
         

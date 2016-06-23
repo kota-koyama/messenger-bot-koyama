@@ -20,7 +20,7 @@ class MessengerBotController < ActionController::Base
       sender.reply({ text: "おはよう#{@@message_count}" })
      
    
-    else
+    elsif text == "かんな！"
      sender.reply({ "attachment":{
                         "type":"template",
                         "payload":{
@@ -48,6 +48,8 @@ class MessengerBotController < ActionController::Base
                             }
                           })
                     
+      else 
+        sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
       
     end
   end

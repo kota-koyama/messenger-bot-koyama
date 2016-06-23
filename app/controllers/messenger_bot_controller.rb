@@ -20,7 +20,7 @@ class MessengerBotController < ActionController::Base
       sender.reply({ text: "おはよう#{@@message_count}" })
      
    
-    elsif text == "かんな！"
+    else
      sender.reply({ "attachment":{
                         "type":"template",
                         "payload":{
@@ -47,8 +47,7 @@ class MessengerBotController < ActionController::Base
                               }
                             }
                           })
-      unless
-         sender.reply({text: "かんなはまだまだ勉強中！言葉をあんまり知らないよ・・・。「かんな！」と呼んでみて！"})
+                    
       
     end
   end
@@ -145,20 +144,27 @@ class MessengerBotController < ActionController::Base
         })
         
         when "satomi_choice"
-          @userdata.girl = "さとみ"
+          @userdata.girl = "satomi"
           sender.reply({ text: "#{@userdata.girl}" })
           @userdata.save
           
         when "haruka_choice"
-          @userdata.girl = "はるか"
+          @userdata.girl = "haruka"
           sender.reply({ text: "#{@userdata.girl}" })
           @userdata.save
           
         when "suzu_choice"
-          @userdata.girl = "すず"
+          @userdata.girl = "suzu"
           sender.reply({ text: "#{@userdata.girl}" })
           @userdata.save
-       
+        
+        when "2"
+          sender.reply({ text: "愛してる" })
+        when "1"
+          sender.reply({ text: "別れましょう" })
+        when "3"
+          
+          
                         
                               
          sender.reply({"attachment":{

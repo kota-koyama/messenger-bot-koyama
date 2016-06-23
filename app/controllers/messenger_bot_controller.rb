@@ -7,7 +7,6 @@ class MessengerBotController < ActionController::Base
     if text == "おはよう"
       @@message_count += 1
       sender.reply({ text: "おはよう#{@@message_count}" })
-      sender.reply({text:"sender"})
       
    
     else

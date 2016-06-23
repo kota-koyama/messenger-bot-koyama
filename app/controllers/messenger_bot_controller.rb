@@ -7,6 +7,7 @@ class MessengerBotController < ActionController::Base
     if Userdatum.find_by(sender_id: sender_id).nil?
       @userdata = Userdatum.new
       @userdata.sender_id = sender_id
+      @userdata.satomi_point = 0
       @userdata.save
       sender.reply({ text: "新規設定に回ってる" })
     else

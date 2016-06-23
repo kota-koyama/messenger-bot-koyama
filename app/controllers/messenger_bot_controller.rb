@@ -8,14 +8,14 @@ class MessengerBotController < ActionController::Base
       @userdata = Userdatum.new
       @userdata.sender_id = sender_id
       @userdata.save
-      sender.reply({ text: "新規設定に回ってる" })
+    
     else
       @userdata = Userdatum.find_by(sender_id: sender_id)
-      sender.reply({ text: "ログイン通過" })
+     
     end
     
     # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-    if Userdatum.find_by(girl: girl).nil?
+    if Userdatum.find_by(girl).nil?
           if text == "おはよう"
             @@message_count += 1
             sender.reply({ text: "おはよう#{@@message_count}" })

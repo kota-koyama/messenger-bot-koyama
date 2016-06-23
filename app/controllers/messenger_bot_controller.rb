@@ -21,7 +21,7 @@ class MessengerBotController < ActionController::Base
       sender.reply({ text: "おはよう#{@@message_count}" })
      
    
-    else
+    else if text == "かんな！"
      sender.reply({ "attachment":{
                         "type":"template",
                         "payload":{
@@ -159,14 +159,7 @@ class MessengerBotController < ActionController::Base
           @userdata.girl = "すず"
           sender.reply({ text: "#{@userdata.girl}" })
           @userdata.save
-        
-        when "2"
-          sender.reply({ text: "愛してる" })
-        when "1"
-          sender.reply({ text: "別れましょう" })
-        when "3"
-          
-          
+       
                         
                               
          sender.reply({"attachment":{

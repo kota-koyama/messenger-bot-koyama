@@ -145,7 +145,7 @@ class MessengerBotController < ActionController::Base
         
         when "satomi_choice"
           @userdata.girl = "さとみ"
-          sender.reply({ text: "#{@userdata.girl}")
+          sender.reply({ text: "#{@userdata.girl}" })
           @userdata.save
           
         when "haruka_choice"

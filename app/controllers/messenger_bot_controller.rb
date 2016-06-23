@@ -8,8 +8,10 @@ class MessengerBotController < ActionController::Base
       @userdata = Userdatum.new
       @userdata.sender_id = sender_id
       @userdata.save
+      sender.reply({ text: "新規設定に回ってる" })
     else
       @userdata = Userdatum.find_by(sender_id: sender_id)
+      sender.reply({ text: "ログイン通過" })
     end
     
     # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
@@ -56,7 +58,15 @@ class MessengerBotController < ActionController::Base
   end
 
   def postback(event, sender)
-    @userdata = Userdatum.find_by(sender_id: sender_id)
+    if Userdatum.find_by(sender_id: sender_id).nil?
+      @userdata = Userdatum.new
+      @userdata.sender_id = sender_id
+      @userdata.save
+      sender.reply({ text: "新規設定に回ってる２" })
+    else
+      @userdata = Userdatum.find_by(sender_id: sender_id)
+      sender.reply({ text: "ログイン通２" })
+    end
     payload = event["postback"]["payload"]
     
     case payload

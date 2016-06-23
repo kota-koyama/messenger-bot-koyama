@@ -11,14 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623053057) do
+ActiveRecord::Schema.define(version: 20160623070714) do
 
   create_table "userdata", force: :cascade do |t|
     t.string   "girl"
     t.time     "backtime"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "sender_id"
+    t.integer  "point"
+    t.integer  "suzu_point"
+    t.integer  "haruka_point"
+    t.integer  "satomi_point"
   end
 
 end

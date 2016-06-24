@@ -1,73 +1,64 @@
 class MessengerBotController < ActionController::Base
 @@message_count = 0
-  def message(event, sender)
-      text = event['message']['text']
-      sender_id = event['sender']['id']
-    
-    if Userdatum.find_by(sender_id: sender_id).nil?
-      @userdata = Userdatum.new
-      @userdata.sender_id = sender_id
-      @userdata.point = 0
-      @userdata.save
-    
-    else
-      @userdata = Userdatum.find_by(sender_id: sender_id)
-     
-    end
-    
-    # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-    if Userdatum.find_by(girl: girl).nil?
-          if text == "おはよう"
-            @userdata.point += 1
-            sender.reply({ text: "おはよう#{@userdata.point}" })
+      def message(event, sender)
+            text = event['message']['text']
+            sender_id = event['sender']['id']
+          
+          if Userdatum.find_by(sender_id: sender_id).nil?
+            @userdata = Userdatum.new
+            @userdata.sender_id = sender_id
+            @userdata.point = 0
+            @userdata.save
+          
+          else
+            @userdata = Userdatum.find_by(sender_id: sender_id)
            
-         
-          elsif text == "かんな！"
-           sender.reply({ "attachment":{
-                              "type":"template",
-                              "payload":{
-                                  "template_type":"generic",
-                                  "elements":[
-                                      {
-                                          "title":"こんにちは！案内人のかんなです！",
-                                          "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
-                                          "subtitle":"DAC社内恋愛ゲームを始めましょう！",
-                                          "buttons":[
-                                              {
-                                                  "type":"postback",
-                                                  "title":"はい",
-                                                  "payload":"OVER"
-                                              },{
-                                                  "type":"postback",
-                                                  "title":"いいえ",
-                                                  "payload":"UNDER"
-                                              }
-                                              
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  }
-                                })
-                          
-            else 
-              sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
-            
-            end
-            
-      else
-        if text == "こんにちは"
-          sender.reply({ text: "こんにちは！" })
+          end
           
-        else
-          sender.reply({ text: "どうしたの？" })
-        end
+          # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
       
+                if text == "おはよう"
+                    @userdata.point += 1
+                    sender.reply({ text: "おはよう#{@userdata.point}" })
+                   
+                
+                elsif text == "かんな！"
+                    sender.reply({ "attachment":{
+                                "type":"template",
+                                "payload":{
+                                    "template_type":"generic",
+                                    "elements":[
+                                        {
+                                            "title":"こんにちは！案内人のかんなです！",
+                                            "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
+                                            "subtitle":"DAC社内恋愛ゲームを始めましょう！",
+                                            "buttons":[
+                                                {
+                                                    "type":"postback",
+                                                    "title":"はい",
+                                                    "payload":"OVER"
+                                                },{
+                                                    "type":"postback",
+                                                    "title":"いいえ",
+                                                    "payload":"UNDER"
+                                                }
+                                                
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  })
+                            
+                else 
+                      sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
+                
+                end
+              
       end
-          
-  end
-
+        
   
+    
 
   def delivery(event, sender)
   end

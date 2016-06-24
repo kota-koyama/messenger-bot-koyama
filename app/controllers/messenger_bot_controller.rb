@@ -1,5 +1,4 @@
 class MessengerBotController < ActionController::Base
-@@message_count = 0
       def message(event, sender)
             text = event['message']['text']
             sender_id = event['sender']['id']
@@ -12,7 +11,6 @@ class MessengerBotController < ActionController::Base
           
           else
             @userdata = Userdatum.find_by(sender_id: sender_id)
-            @userdata.point = 0
           end
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
@@ -20,7 +18,7 @@ class MessengerBotController < ActionController::Base
                 if text == "おはよう"
                     @userdata.point += 1
                     sender.reply({ text: "おはよう#{@userdata.point}" })
-                    @userdate.save
+                    @userdata.save
                    
                 
                 elsif text == "かんな！"

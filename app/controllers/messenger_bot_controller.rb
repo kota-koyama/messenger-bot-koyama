@@ -7,6 +7,7 @@ class MessengerBotController < ActionController::Base
     if Userdatum.find_by(sender_id: sender_id).nil?
       @userdata = Userdatum.new
       @userdata.sender_id = sender_id
+      @userdata.point = 0
       @userdata.save
     
     else
@@ -15,10 +16,10 @@ class MessengerBotController < ActionController::Base
     end
     
     # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-    if Userdatum.find_by(girl).nil?
+    if Userdatum.find_by(girl: girl).nil?
           if text == "おはよう"
-            @@message_count += 1
-            sender.reply({ text: "おはよう#{@@message_count}" })
+            @userdata.point += 1
+            sender.reply({ text: "おはよう#{@userdata.point}" })
            
          
           elsif text == "かんな！"
@@ -80,7 +81,7 @@ class MessengerBotController < ActionController::Base
     case payload
     
        when "OVER" 
-         sender.reply({ text: "それじゃぁ、好きなタイプの女の子を選んでね！" })
+         sender.reply({ text: "それじゃぁ、好きなタイプの男の子を選んでね！" })
          sender.reply({ "attachment":{
                         "type":"template",
                         "payload":{

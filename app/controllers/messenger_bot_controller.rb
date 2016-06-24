@@ -12,7 +12,7 @@ class MessengerBotController < ActionController::Base
           
           else
             @userdata = Userdatum.find_by(sender_id: sender_id)
-           
+            @userdata.point = 0
           end
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]

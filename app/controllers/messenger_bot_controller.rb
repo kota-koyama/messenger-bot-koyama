@@ -20,7 +20,7 @@ class MessengerBotController < ActionController::Base
                 if text == "おはよう"
                     @userdata.point += 1
                     sender.reply({ text: "おはよう#{@userdata.point}" })
-                    @userdate.save
+                    @userdata.save
                    
                 
                 elsif text == "かんな！"

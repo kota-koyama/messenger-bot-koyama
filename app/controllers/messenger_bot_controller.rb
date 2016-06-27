@@ -7,6 +7,7 @@ class MessengerBotController < ActionController::Base
           if User.find_by(user_id: user_id).nil?
             @users = User.new
             @users.user_id = user_id
+            @users.userpoint = 0
             @users.save
           
           else
@@ -16,9 +17,9 @@ class MessengerBotController < ActionController::Base
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
       
           if text == "おはよう"
-           
-              sender.reply({ text: "おはよう" })
-             
+            @users = 0
+            sender.reply({ text: "おはよう" })
+            @users.save
           
           elsif text == "かんな！"
               sender.reply({ "attachment":{
@@ -49,7 +50,9 @@ class MessengerBotController < ActionController::Base
                             })
                       
           else 
+            @users.userpoint += 1
                 sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
+            @users.update(user_params)
           
           end
               

@@ -62,7 +62,7 @@ class MessengerBotController < ActionController::Base
   end
 
   def postback(event, sender)
-    sender_id = event['sender']['id']
+    user_id = event['sender']['id']
      @users = User.find_by(user_id: user_id)
     
     payload = event["postback"]["payload"]

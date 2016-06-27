@@ -17,9 +17,9 @@ class MessengerBotController < ActionController::Base
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
       
           if text == "おはよう"
-            @users.userpoint = 0
+            
             sender.reply({ text: "おはよう" })
-            @users.save
+            
           
           elsif text == "かんな！"
               sender.reply({ "attachment":{

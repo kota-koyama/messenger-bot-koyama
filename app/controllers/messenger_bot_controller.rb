@@ -4,7 +4,7 @@ class MessengerBotController < ActionController::Base
             text = event['message']['text']
             user_id = event['sender']['id']
           
-          if Userdatum.find_by(sender: user_id).nil?
+          if User.find_by(sender: user_id).nil?
             @users = User.new
             @users.user_id = user_id
             @users.save

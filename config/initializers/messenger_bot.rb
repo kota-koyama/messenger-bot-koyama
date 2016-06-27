@@ -1,5 +1,5 @@
 Messenger::Bot.config do |config|
-  config.access_token = "EAAYw9ZC4mz60BABzlBXsBTB45ooS6kvBngD6Wmd5tFjAuMGK84VaOR5mS8MWBpuRT87GpvSr5oYUHifUb9xnR7ZAIp5WeuVyaXPQ4OSX5EU73qkhEZCwpJVZBdakNhZC1x3SfHsATfauE2eiZB58ig3jDQOexzZCXgWwO7ncIIwSQZDZD"
+  config.access_token = "EAAYw9ZC4mz60BAENZCnebjptumTPvPeyBCNZA7ZCGbyop1Mh896ZB8nQK2PgHSukBNG72W7DZBBZA1avDHuwZA9hygeoBLAm7rCgiidgM1L70z1rRkuNZCx4N68KDFk9CpcobuzdpZCkGtvEvJsXu8WHND3iDeE8BRJdWtfGXEggL9owZDZD"
   config.validation_token = "hoge"
   config.secret_token = "a9351193017b4d85c8c501ec01dea5cc"
 end

@@ -4,13 +4,13 @@ class MessengerBotController < ActionController::Base
             text = event['message']['text']
             user_id = event['sender']['id']
           
-          if User.find_by(sender: user_id).nil?
+          if User.find_by(user_id: user_id).nil?
             @users = User.new
             @users.user_id = user_id
             @users.save
           
           else
-            @users = User.find_by(sender: user_id)
+            @users = User.find_by(user_idr: user_id)
           end
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
@@ -63,7 +63,7 @@ class MessengerBotController < ActionController::Base
 
   def postback(event, sender)
     user_id = event['sender']['id']
-     @users = User.find_by(sender: user_id)
+     @users = User.find_by(user_id: user_id)
     
     payload = event["postback"]["payload"]
     

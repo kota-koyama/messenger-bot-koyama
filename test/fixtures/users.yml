@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  boy: MyString
+  userpoint: 1
+  yamapoint: 1
+  kusapoint: 1
+  koyapoint: 1
+  kawapoint: 1
+  nakapoint: 1
+  usertime: 2016-06-27 06:41:57
+
+two:
+  boy: MyString
+  userpoint: 1
+  yamapoint: 1
+  kusapoint: 1
+  koyapoint: 1
+  kawapoint: 1
+  nakapoint: 1
+  usertime: 2016-06-27 06:41:57

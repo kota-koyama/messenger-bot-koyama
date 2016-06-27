@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623070714) do
+ActiveRecord::Schema.define(version: 20160627065156) do
 
-  create_table "userdata", force: :cascade do |t|
-    t.string   "girl"
-    t.time     "backtime"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "sender_id"
-    t.integer  "point"
-    t.integer  "suzu_point"
-    t.integer  "haruka_point"
-    t.integer  "satomi_point"
+  create_table "users", force: :cascade do |t|
+    t.string   "boy"
+    t.integer  "userpoint"
+    t.integer  "yamapoint"
+    t.integer  "kusapoint"
+    t.integer  "koyapoint"
+    t.integer  "kawapoint"
+    t.integer  "nakapoint"
+    t.time     "usertime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "user_id"
   end
 
 end

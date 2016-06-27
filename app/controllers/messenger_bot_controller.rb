@@ -1,66 +1,78 @@
 class MessengerBotController < ActionController::Base
 
-  def message(event, sender)
-      text = event['message']['text']
-      sender_id = event['sender']['id']
-    
-    if Userdatum.find_by(sender_id: sender_id).nil?
-      @userdata = Userdatum.new
-      @userdata.sender_id = sender_id
-      @userdata.save
-    else
-      @userdata = Userdatum.find_by(sender_id: sender_id)
-    end
-    
-    # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-    if text == "おはよう"
-    
-      sender.reply({ text: "おはよう" })
-     
-   
-    else
-     sender.reply({ "attachment":{
-                        "type":"template",
-                        "payload":{
-                            "template_type":"generic",
-                            "elements":[
-                                {
-                                    "title":"こんにちは！案内人のかんなです！",
-                                    "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
-                                    "subtitle":"DAC社内恋愛ゲームを始めましょう！",
-                                    "buttons":[
-                                        {
-                                            "type":"postback",
-                                            "title":"はい",
-                                            "payload":"OVER"
-                                        },{
-                                            "type":"postback",
-                                            "title":"いいえ",
-                                            "payload":"UNDER"
-                                        }
-                                        
-                                    ]
-                                  }
-                                ]
-                              }
-                            }
-                          })
-                    
+      def message(event, sender)
+            text = event['message']['text']
+            sender_id = event['sender']['id']
+          
+          if Userdatum.find_by(sender_id: sender_id).nil?
+            @userdata = Userdatum.new
+            @userdata.sender_id = sender_id
+            @userdata.point = 0
+            @userdata.save
+          
+          else
+            @userdata = Userdatum.find_by(sender_id: sender_id)
+          end
+          
+          # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
       
-    end
-  end
-
+                if text == "おはよう"
+                    @userdata.point += 1
+                    sender.reply({ text: "おはよう#{@userdata.point}" })
+                    @userdate.save
+                   
+                
+                elsif text == "かんな！"
+                    sender.reply({ "attachment":{
+                                "type":"template",
+                                "payload":{
+                                    "template_type":"generic",
+                                    "elements":[
+                                        {
+                                            "title":"こんにちは！案内人のかんなです！",
+                                            "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
+                                            "subtitle":"DAC社内恋愛ゲームを始めましょう！",
+                                            "buttons":[
+                                                {
+                                                    "type":"postback",
+                                                    "title":"はい",
+                                                    "payload":"OVER"
+                                                },{
+                                                    "type":"postback",
+                                                    "title":"いいえ",
+                                                    "payload":"UNDER"
+                                                }
+                                                
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  })
+                            
+                else 
+                      sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
+                
+                end
+              
+      end
+        
   
+    
 
   def delivery(event, sender)
   end
 
   def postback(event, sender)
+    sender_id = event['sender']['id']
+     @userdata = Userdatum.find_by(sender_id: sender_id)
+    
     payload = event["postback"]["payload"]
+    
     case payload
     
        when "OVER" 
-         sender.reply({ text: "それじゃぁ、好きなタイプの女の子を選んでね！" })
+         sender.reply({ text: "それじゃぁ、好きなタイプの男の子を選んでね！" })
          sender.reply({ "attachment":{
                         "type":"template",
                         "payload":{
@@ -137,11 +149,20 @@ class MessengerBotController < ActionController::Base
            }
         })
         
-        when "2"
-          sender.reply({ text: "愛してる" })
-        when "1"
-          sender.reply({ text: "別れましょう" })
-        when "3"
+        when "satomi_choice"
+          @userdata.girl = "satomi"
+          sender.reply({ text: "#{@userdata.girl}" })
+          @userdata.save
+          
+        when "haruka_choice"
+          @userdata.girl = "haruka"
+          sender.reply({ text: "#{@userdata.girl}" })
+          @userdata.save
+          
+        when "suzu_choice"
+          @userdata.girl = "suzu"
+          sender.reply({ text: "#{@userdata.girl}" })
+          @userdata.save
         
         when "2"
           sender.reply({ text: "愛してる" })

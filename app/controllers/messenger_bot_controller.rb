@@ -67,27 +67,6 @@ class MessengerBotController < ActionController::Base
                       if text.include?("5時→9時～私に恋した～お坊さん", "5じ9じ")
                          @users.yamapoint += 1
                          @users.save
-                        　　sender.reply({ "attachment":{
-                                            "type":"template",
-                                            "payload":{
-                                                "template_type":"generic",
-                                                "elements":[
-                                                    {
-                                                        "title":"見てくれてたんだ！ありがとう！",
-                                                        "image_url":"http://imgcp.aacdn.jp/img-a/auto/auto/aa/gm/article/1/9/5/4/2/7/ude.jpg",
-                                                        "subtitle":"DVDも買ってね？",
-                                                        "buttons":[
-                                                            {
-                                                                "type":"web_url",
-                                                                "url":"http://allabout.co.jp/gm/gc/195427/",
-                                                                "title":"詳細をHPで見る"
-                                                            }
-                                                          ]
-                                                        }
-                                                      ]
-                                                     }
-                        　　                          }
-                                                　})
                            sender.reply({text: "好感度が#{@users.save}に上がりました。"})
                            
                       else

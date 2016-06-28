@@ -21,16 +21,80 @@ class MessengerBotController < ActionController::Base
             
                       if text.include?("やまP説明書")
                         sender.reply({ text: "これからやまPを攻略します。方法は2つです。"})
-                        sender.reply({ text: "一つ目は、時々発生する選択しイベントで評価の選択肢を選択することです。選択によって付与されるポイントが変わってくるので適切とおもわれる回答を選択しましょう!
-                                              選択によっては減点されてしまうので注意！"})
-                        sender.reply({ text: "二つ目は、日常の会話の中でやまPが喜ぶ言葉を見つけましょう！インターネットで「やまP」のことを調べてみましょう！やまPの好きなものや、やまPに関連することを入力
-                                              してみると何かが起こるかも？逆にやまPが嫌いなことを発言しないように注意！"})
+                        sender.reply({ text: "一つ目は、時々発生する選択しイベントで評価の選択肢を選択することです。選択によって付与されるポイントが変わってくるので適切とおもわれる回答を選択しましょう!選択によっては減点されてしまうので注意！"})
+                        sender.reply({ text: "二つ目は、日常の会話の中でやまPが喜ぶ言葉を見つけましょう！インターネットで「やまP」のことを調べてみましょう！やまPの好きなものや、やまPに関連することを入力してみると何かが起こるかも？逆にやまPが嫌いなことを発言しないように注意！"})
                         sender.reply({ text: "好感度をあげるとやまPとの関係が発展して返ってくる言葉が変化してくるかも・・・！"})
-                        
+                        sender.reply({ text: "それでは選択肢イベントをためしてみよう！"})
+                        sender.reply({"attachment":{
+                                      "type":"image",
+                                      "payload":{
+                                      "url":"http://stat.ameba.jp/user_images/20091117/08/yamabiko141/59/32/j/o0635044310309754271.jpg"
+                                                }
+                                            }
+                                   })
+                        sender.reply({ "attachment":{
+                                      "type":"template",
+                                      "payload":{
+                                          "template_type":"button",
+                                          "text":"お前、男だったの!?",
+                                          "buttons":[
+                                              {
+                                                  "type":"postback",
+                                                  "title":"はい",
+                                                  "payload":"1"
+                                              },
+                                              {
+                                                  "type":"postback",
+                                                  "title":"なんとも言えない",
+                                                  "payload":"1"
+                                              },
+                                              {
+                                                  "type":"postback",
+                                                  "title":"いいえ",
+                                                  "payload":"1"
+                                              }
+                                          ]
+                                      }
+                                   }
+                                })
+                                        
                       else
                         sender.reply({ text: "やまPだよ"})
                       end  
                       
+          elsif @@flag = 2
+          
+                      if text.include?("5時→9時～私に恋した～お坊さん", "5じ9じ")
+                         @users.yamapoint += 1
+                         @users.save
+                        　　sender.reply({ "attachment":{
+                                            "type":"template",
+                                            "payload":{
+                                                "template_type":"generic",
+                                                "elements":[
+                                                    {
+                                                        "title":"見てくれてたんだ！ありがとう！",
+                                                        "image_url":"http://imgcp.aacdn.jp/img-a/auto/auto/aa/gm/article/1/9/5/4/2/7/ude.jpg",
+                                                        "subtitle":"DVDも買ってね？",
+                                                        "buttons":[
+                                                            {
+                                                                "type":"web_url",
+                                                                "url":"http://allabout.co.jp/gm/gc/195427/",
+                                                                "title":"詳細をHPで見る"
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                     }
+                        　　                          }
+                                                　})
+                           sender.reply({text: "好感度が#{@users.save}に上がりました。"})
+                           
+                      else
+                        sender.reply({text: "やまPだよ"})
+                      end
+                        
+                
           else
                       if text.include?("おはよう")
                         
@@ -185,22 +249,26 @@ class MessengerBotController < ActionController::Base
           sender.reply({ text: "r" })
      
         
-        when "2"
-          sender.reply({ text: "愛してる" })
         when "1"
-          sender.reply({ text: "別れましょう" })
-        when "3"
+          @users.yamapoint += 1
+          @users.save
+          @@flag = 2
+          sender.reply({"attachment":{
+            "type":"image",
+            "payload":{
+            "url":"http://stat.ameba.jp/user_images/20091117/08/yamabiko141/59/32/j/o0635044310309754271.jpg"
+                      }
+                  }
+         })
+          sender.reply({text: "性別なんてなんだって構わないさ！これからよろしく！"})
+          sender.reply({text: "好感度が#{@users.save}に上がりました。"})
+          sender.reply({text: "次は好感度アップの言葉を言ってみよう！「5時→9時～私に恋した～お坊さん」と入力してみましょう！"})
+       
           
           
                         
                               
-         sender.reply({"attachment":{
-            "type":"image",
-            "payload":{
-            "url":"http://kanna77.blog.so-net.ne.jp/_images/blog/_cf4/kanna77/980-kanna-003_x1000.jpg"
-                      }
-                  }
-         })
+         
         
     end
   end

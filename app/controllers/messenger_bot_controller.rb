@@ -64,7 +64,7 @@ class MessengerBotController < ActionController::Base
                       
           elsif @@flag = 2
           
-                      if text.include?("5時→9時～私に恋した～お坊さん", "5じ9じ")
+                      if text.include?("5時→9時～私に恋したお坊さん～")
                          @users.yamapoint += 1
                          @users.save
                            sender.reply({text: "好感度が#{@users.save}に上がりました。"})
@@ -240,8 +240,8 @@ class MessengerBotController < ActionController::Base
                   }
          })
           sender.reply({text: "性別なんてなんだって構わないさ！これからよろしく！"})
-          sender.reply({text: "好感度が#{@users.save}に上がりました。"})
-          sender.reply({text: "次は好感度アップの言葉を言ってみよう！「5時→9時～私に恋した～お坊さん」と入力してみましょう！"})
+          sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+          sender.reply({text: "次は好感度アップの言葉を言ってみよう！「5時→9時～私に恋したお坊さん～」と入力してみましょう！"})
        
           
           

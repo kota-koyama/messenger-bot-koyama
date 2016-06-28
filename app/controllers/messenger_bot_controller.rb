@@ -17,7 +17,7 @@ class MessengerBotController < ActionController::Base
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
           
         
-          if @flag = 1
+          if @@flag = 1
             
                       if text.include?("やまP説明書")
                         sender.reply({ text: "これからやまPを攻略します。方法は2つです。"})
@@ -62,7 +62,7 @@ class MessengerBotController < ActionController::Base
                         sender.reply({ text: "やまPだよ"})
                       end  
                       
-          elsif @flag = 2
+          elsif @@flag = 2
           
                       if text.include?("5時→9時～私に恋したお坊さん～")
                          @users.yamapoint += 1
@@ -213,7 +213,7 @@ class MessengerBotController < ActionController::Base
         when "yamasita_choice"
           @users.yamapoint = 1
           @users.save
-          @flag = 1
+          @@flag = 0
           sender.reply({ text: "やまPに決定！やまPの好感度が#{@users.yamapoint}になったよ！" })
         　sender.reply({ text: "それではやまP攻略のコツを教えるよ！「やまPの説明書」と入力してみてね！"})
        
@@ -231,7 +231,7 @@ class MessengerBotController < ActionController::Base
         when "1"
           @users.yamapoint += 1
           @users.save
-          @flag = 2
+          @@flag = 2
           sender.reply({"attachment":{
             "type":"image",
             "payload":{

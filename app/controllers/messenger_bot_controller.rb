@@ -17,7 +17,7 @@ class MessengerBotController < ActionController::Base
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
           
         
-          if @users = User.find_by(yamapoint).nil?
+          if @users = User.find_by(yamapoint: yamapoint).nil?
                       if text.include?("おはよう")
                         
                         sender.reply({ text: "おはよう" })

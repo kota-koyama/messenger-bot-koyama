@@ -50,8 +50,9 @@ class MessengerBotController < ActionController::Base
                             })
                       
           else 
-          
-                sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
+            @users.userpoint = @users.userpoint + 1
+            @users.update(user_params)
+                sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
           
           end
               

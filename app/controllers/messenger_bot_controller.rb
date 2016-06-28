@@ -15,52 +15,60 @@ class MessengerBotController < ActionController::Base
           end
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-      
-          if text == "おはよう"
-            
-            sender.reply({ text: "おはよう" })
-            
           
-          elsif text == "かんな！"
-              sender.reply({ "attachment":{
-                          "type":"template",
-                          "payload":{
-                              "template_type":"generic",
-                              "elements":[
-                                  {
-                                      "title":"こんにちは！案内人のかんなです！",
-                                      "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
-                                      "subtitle":"DAC社内恋愛ゲームを始めましょう！",
-                                      "buttons":[
-                                          {
-                                              "type":"postback",
-                                              "title":"はい",
-                                              "payload":"OVER"
-                                          },{
-                                              "type":"postback",
-                                              "title":"いいえ",
-                                              "payload":"UNDER"
-                                          }
-                                          
-                                      ]
-                                    }
-                                  ]
-                                }
-                              }
-                            })
+        
+          if User.find_by(yamapoint).nil?
+                      if text.include?("おはよう")
+                        
+                        sender.reply({ text: "おはよう" })
+                        
                       
-          else 
-            
-            @users.userpoint += 1
-            @users.save
-                sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
-          
-          end
-              
+                      elsif text == "かんな！"
+                          sender.reply({ "attachment":{
+                                      "type":"template",
+                                      "payload":{
+                                          "template_type":"generic",
+                                          "elements":[
+                                              {
+                                                  "title":"こんにちは！案内人のかんなです！",
+                                                  "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
+                                                  "subtitle":"DAC社内恋愛ゲームを始めましょう！",
+                                                  "buttons":[
+                                                      {
+                                                          "type":"postback",
+                                                          "title":"はい",
+                                                          "payload":"OVER"
+                                                      },{
+                                                          "type":"postback",
+                                                          "title":"いいえ",
+                                                          "payload":"UNDER"
+                                                      }
+                                                      
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        })
+                                        
+                                  
+                      else 
+                        
+                        @users.userpoint += 1
+                        @users.save
+                            sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
+                      
+                      end
+          else
+                      if text.include?("やまP説明書")
+                        sender.reply({ text: "これからやまPを攻略します"})
+                      else
+                        sender.reply({ text: "やまPだよ"})
+                      end  
+          end          
       end
         
-  
-    
+      
 
   def delivery(event, sender)
   end
@@ -81,14 +89,14 @@ class MessengerBotController < ActionController::Base
                             "template_type":"generic",
                             "elements":[
                                 {
-                                    "title":"さとみ",
-                                    "image_url":"http://cdn-ak.f.st-hatena.com/images/fotolife/R/ROUTE53/20150515/20150515181625.jpg",
-                                    "subtitle":"ひたすらかわいい！たまに計算高いけど間接キスできたらこっちのもの！",
+                                    "title":"やまP",
+                                    "image_url":"http://userdisk.webry.biglobe.ne.jp/017/341/37/N000/000/018/144686495833049792180_151107hh.PNG",
+                                    "subtitle":"至高のイケメン。テレビでは色々な顔を見せるアイドル。普段は何を考えているのかわからないミステリアスさが魅力",
                                     "buttons":[
                                         {
                                             "type":"postback",
-                                            "title":"さとみ一択！",
-                                            "payload":"satomi_choice"
+                                            "title":"やまP一択！",
+                                            "payload":"yamasita_choice"
                                         }
                                         
                                     ]
@@ -151,9 +159,11 @@ class MessengerBotController < ActionController::Base
            }
         })
         
-        when "satomi_choice"
-          
-          sender.reply({ text: "g" })
+        when "yamasita_choice"
+          @users.yamapoint = 1
+          @users.save
+          sender.reply({ text: "やまPに決定！やまPの好感度が#{@users.yamapoint}になったよ！" })
+        　sender.reply({ text: "それではやまP攻略のコツを教えるよ！「やまPの説明書」と入力してみてね！"})
        
           
         when "haruka_choice"

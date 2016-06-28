@@ -3,6 +3,7 @@ class MessengerBotController < ActionController::Base
       def message(event, sender)
             text = event['message']['text']
             user_id = event['sender']['id']
+           
           
           if User.find_by(user_id: user_id).nil?
             @users = User.new
@@ -50,9 +51,9 @@ class MessengerBotController < ActionController::Base
                             })
                       
           else 
-            @users.userpoint = @users.userpoint + 1
+            @users.point = @users.userpoint + 1
             @users.update(user_params)
-                sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
+                sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.point}"})
           
           end
               

@@ -17,7 +17,15 @@ class MessengerBotController < ActionController::Base
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
           
         
-          if @users = User.find_by(yamapoint: yamapoint).nil?
+          if @@flag = 1
+            
+                      if text.include?("やまP説明書")
+                        sender.reply({ text: "これからやまPを攻略します"})
+                      else
+                        sender.reply({ text: "やまPだよ"})
+                      end  
+                      
+          else
                       if text.include?("おはよう")
                         
                         sender.reply({ text: "おはよう" })
@@ -59,12 +67,6 @@ class MessengerBotController < ActionController::Base
                             sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
                       
                       end
-          else
-                      if text.include?("やまP説明書")
-                        sender.reply({ text: "これからやまPを攻略します"})
-                      else
-                        sender.reply({ text: "やまPだよ"})
-                      end  
           end          
       end
         
@@ -162,6 +164,7 @@ class MessengerBotController < ActionController::Base
         when "yamasita_choice"
           @users.yamapoint = 1
           @users.save
+          @@flag = 1
           sender.reply({ text: "やまPに決定！やまPの好感度が#{@users.yamapoint}になったよ！" })
         　sender.reply({ text: "それではやまP攻略のコツを教えるよ！「やまPの説明書」と入力してみてね！"})
        

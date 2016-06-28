@@ -70,7 +70,7 @@ class MessengerBotController < ActionController::Base
                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                            
                       else
-                        sender.reply({text: "やまPだよ"})
+                        sender.reply({text: "やまPだよ!!"})
                       end
                         
                 

@@ -67,7 +67,7 @@ class MessengerBotController < ActionController::Base
                       if text.include?("5時→9時～私に恋したお坊さん～")
                          @users.yamapoint += 1
                          @users.save
-                           sender.reply({text: "好感度が#{@users.save}に上がりました。"})
+                           sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                            
                       else
                         sender.reply({text: "やまPだよ"})

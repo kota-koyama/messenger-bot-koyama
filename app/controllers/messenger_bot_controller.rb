@@ -20,7 +20,13 @@ class MessengerBotController < ActionController::Base
           if @@flag = 1
             
                       if text.include?("やまP説明書")
-                        sender.reply({ text: "これからやまPを攻略します"})
+                        sender.reply({ text: "これからやまPを攻略します。方法は2つです。"})
+                        sender.reply({ text: "一つ目は、時々発生する選択しイベントで評価の選択肢を選択することです。選択によって付与されるポイントが変わってくるので適切とおもわれる回答を選択しましょう!
+                                              選択によっては減点されてしまうので注意！"})
+                        sender.reply({ text: "二つ目は、日常の会話の中でやまPが喜ぶ言葉を見つけましょう！インターネットで「やまP」のことを調べてみましょう！やまPの好きなものや、やまPに関連することを入力
+                                              してみると何かが起こるかも？逆にやまPが嫌いなことを発言しないように注意！"})
+                        sender.reply({ text: "好感度をあげるとやまPとの関係が発展して返ってくる言葉が変化してくるかも・・・！"})
+                        
                       else
                         sender.reply({ text: "やまPだよ"})
                       end  

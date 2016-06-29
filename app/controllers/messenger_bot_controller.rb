@@ -101,11 +101,91 @@ class MessengerBotController < ActionController::Base
                       end
                       
           elsif @@flag == 3 
-                      if text.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                      if text.include?("のぶた") || text.include?("野ブタ") || text.include?("野ぶた") 
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "彰だっちゃ"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?("千葉県")
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "思い出たくさんなんだ"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?("クロサギ")
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "シロサギは例外なく俺の餌だ"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?("コード・ブルー")
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "ドクターヘリってすごいよね！"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?("ブザー・ビート")
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "今度バスケットボールしよ！ワン　オン　ワン！ワンワン♪"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?("SUMMER NUDE")
+                      @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "ロケ地の海がきれいだったなぁ…今度海いこうね！"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?("アルジャ")
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "あいきょでしょ‼︎"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?("タッキー")
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "俺にとってはいつまでも憧れの人だね！"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?("修二と彰")
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！￥　"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                        
                         
                       else
                         sender.reply({text: "てすと"})

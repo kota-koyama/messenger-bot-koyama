@@ -101,11 +101,14 @@ class MessengerBotController < ActionController::Base
                       end
                       
           elsif @@flag == 3 
-                      if text.include?("野ブタ")
+                      if text.include?("野ブタ"||"のぶた"||"野ブタ")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "彰だっちゃ"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      else
+                        sender.reply({text: "てすと"})
                       
                       end
                         

@@ -230,8 +230,12 @@ class MessengerBotController < ActionController::Base
                       
           elsif  @users.yamapoint > 20
                          
-                         @@flag = 4
-                          sender.reply({ text: "好感度が20を超えたので、やまPとの関係が発展しました！"})
+                         if text == "おはよう"
+                              sender.reply({text: "てすと"})
+                         else
+                            @@flag = 4
+                              sender.reply({ text: "好感度が20を超えたので、やまPとの関係が発展しました！"})
+                         end
                 
          
           elsif @@flag == 4

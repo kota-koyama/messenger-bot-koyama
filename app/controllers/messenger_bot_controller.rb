@@ -199,26 +199,27 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
                       elsif text == "別れる"
-                                                 sender.reply({ "attachment":{
-                                    "type":"template",
-                                    "payload":{
-                                        "template_type":"button",
-                                        "text":"本当に俺と別れるの？",
-                                        "buttons":[
-                                            {
-                                                "type":"postback",
-                                                "title":"はい",
-                                                "payload":"2"
-                                            },
-                                            {
-                                                "type":"postback",
-                                                "title":"いいえ",
-                                                "payload":"3"
-                                            }
-                                        ]
-                                    }
-                                 }
-                              })
+                      
+                            sender.reply({ "attachment":{
+                                          "type":"template",
+                                          "payload":{
+                                              "template_type":"button",
+                                              "text":"本当に俺と別れるの？",
+                                              "buttons":[
+                                                  {
+                                                      "type":"postback",
+                                                      "title":"はい",
+                                                      "payload":"2"
+                                                  },
+                                                  {
+                                                      "type":"postback",
+                                                      "title":"いいえ",
+                                                      "payload":"3"
+                                                  }
+                                              ]
+                                          }
+                                       }
+                                    })
                         　
                         
                       else

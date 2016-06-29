@@ -107,79 +107,79 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "彰だっちゃ"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("千葉県")
+                      elsif text.include?("千葉県")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "思い出たくさんなんだ"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("クロサギ") || text.include?("くろさぎ") || text.include?("シロサギ")
+                      elsif text.include?("クロサギ") || text.include?("くろさぎ") || text.include?("シロサギ")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "シロサギは例外なく俺の餌だ"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("コード・ブルー") || text.include?("コードブルー") || text.include?("こーどぶるー")
+                      elsif text.include?("コード・ブルー") || text.include?("コードブルー") || text.include?("こーどぶるー")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "ドクターヘリってすごいよね！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("ブザー・ビート") || text.include?("ブザービート") || text.include?("ぶざーびーと")
+                      elsif text.include?("ブザー・ビート") || text.include?("ブザービート") || text.include?("ぶざーびーと")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "今度バスケットボールしよ！ワン　オン　ワン！ワンワン♪"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("SUMMER NUDE") || text.include?("サマーヌード") || text.include?("さまーぬーど")
+                      elsif text.include?("SUMMER NUDE") || text.include?("サマーヌード") || text.include?("さまーぬーど")
                       @users.yamapoint += 1 
                          @users.save
                         sender.reply({text: "ロケ地の海がきれいだったなぁ…今度海いこうね！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("アルジャ") || text.include?("あるじゃ") 
+                      elsif text.include?("アルジャ") || text.include?("あるじゃ") 
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "あいきょでしょ‼︎"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("タッキー" )|| text.include?("滝沢") || text.include?("たっきー")
+                      elsif text.include?("タッキー" )|| text.include?("滝沢") || text.include?("たっきー")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "俺にとってはいつまでも憧れの人だね！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("修二と彰") || text.include?("彰") || text.include?("あきら")
+                      elsif text.include?("修二と彰") || text.include?("彰") || text.include?("あきら")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("修二と彰") || text.include?("彰") || text.include?("あきら") || text.include?("青春アミーゴ") || text.include?("抱いてセニョリータ")
+                      elsif text.include?("修二と彰") || text.include?("彰") || text.include?("あきら") || text.include?("青春アミーゴ") || text.include?("抱いてセニョリータ")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("白虎隊") || text.include?("びゃっこ") || text.include?("みねじ") || text.include?("峰治")
+                      elsif text.include?("白虎隊") || text.include?("びゃっこ") || text.include?("みねじ") || text.include?("峰治")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "精米業を営んでおります。"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("明日のジョー") || text.include?("明日のじょー") || text.include?("あしたのじょー") || text.include?("あしたのじょう")
+                      elsif text.include?("明日のジョー") || text.include?("明日のじょー") || text.include?("あしたのじょー") || text.include?("あしたのじょう")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "立つんだ、立つんだジョー"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                    　elsif ext.include?("すねお") || text.include?("スネ夫") || text.include?("スネオ") || text.include?("すねちゃま") || text.include?("スネちゃま") || text.include?("ほねかわ") || text.include?("骨川")
+                    　elsif text.include?("すねお") || text.include?("スネ夫") || text.include?("スネオ") || text.include?("すねちゃま") || text.include?("スネちゃま") || text.include?("ほねかわ") || text.include?("骨川")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "車のCMってお金かけるんだなぁって思う"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                       
-                      elsif ext.include?("テラフォーマーズ") || text.include?("テラホー") || text.include?("てらほーまー") || text.include?("てらふぉーまーず") || text.include?("ティン" ) || text.include?("武藤仁")
+                      elsif text.include?("テラフォーマーズ") || text.include?("テラホー") || text.include?("てらほーまー") || text.include?("てらふぉーまーず") || text.include?("ティン" ) || text.include?("武藤仁")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({"attachment":{

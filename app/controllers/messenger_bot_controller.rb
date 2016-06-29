@@ -192,7 +192,7 @@ class MessengerBotController < ActionController::Base
                                    })
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("sound tripper") || text.include?("Sound Tripper") || text.include?("Sound tripper") || text.include?("sound Tripper")
+                      elsif text.include?("sound tripper") || text.include?("Sound Tripper") || text.include?("Sound tripper") || text.include?("sound Tripper")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "聞いてくれてるの！嬉しいな！ラジオの仕事って本当に楽しいんだ。"})

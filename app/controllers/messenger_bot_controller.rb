@@ -198,6 +198,12 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "聞いてくれてるの！嬉しいな！ラジオの仕事って本当に楽しいんだ。"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
+                      elsif  @users.yamapoint > 20
+                         
+                         @@flag = 4
+                          sender.reply({ text: "好感度が20を超えたので、やまPとの関係が発展しました！"})
+                
+                        
                       elsif text == "別れる"
                       
                             sender.reply({ "attachment":{
@@ -226,8 +232,17 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "てすと"})
                       
                       end
-                      
          
+          elsif @@flag == 4
+                      
+                      if text == "元気？"
+                          sender.reply({text: "元気だよ！"})
+                      else
+                          sender.reply({text: "今は好きしか言いたくない気分なんだ"})
+                          sender.reply({text: "好き"})
+                          sender.reply({text: "大好き"})
+                      end
+                    
                 
           else
                       if text.include?("おはよう")

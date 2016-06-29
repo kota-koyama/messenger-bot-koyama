@@ -101,7 +101,7 @@ class MessengerBotController < ActionController::Base
                       end
                       
           elsif @@flag == 3 
-                      if text.include?("野ブタ"||"のぶた"||"野ブタ")
+                      if text.include?("野ブタ" , "のぶた" , "野ブタ")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "彰だっちゃ"})

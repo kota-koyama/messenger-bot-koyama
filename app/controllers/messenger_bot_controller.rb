@@ -205,16 +205,7 @@ class MessengerBotController < ActionController::Base
                       
                       end
                       
-          elsif @@flag == 4
-                      if text.include?("おはよう")
-                        
-                        sender.reply({ text: "やっほ！" })
-                      
-                      else
-                        sender.reply({ text: "君と会いたいな" })
-                      
-                      end
-                    
+         
                 
           else
                       if text.include?("おはよう")

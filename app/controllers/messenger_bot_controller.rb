@@ -101,6 +101,7 @@ class MessengerBotController < ActionController::Base
                       end
                       
           elsif @@flag == 3 
+          
                       if text.include?("のぶた") || text.include?("野ブタ") || text.include?("野ぶた") 
                         @users.yamapoint += 1
                          @users.save
@@ -197,8 +198,28 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "聞いてくれてるの！嬉しいな！ラジオの仕事って本当に楽しいんだ。"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      
-                        
+                      elsif text == "別れる"
+                                                 sender.reply({ "attachment":{
+                                    "type":"template",
+                                    "payload":{
+                                        "template_type":"button",
+                                        "text":"本当に俺と別れるの？",
+                                        "buttons":[
+                                            {
+                                                "type":"postback",
+                                                "title":"はい",
+                                                "payload":"2"
+                                            },
+                                            {
+                                                "type":"postback",
+                                                "title":"いいえ",
+                                                "payload":"3"
+                                            }
+                                        ]
+                                    }
+                                 }
+                              })
+                        　
                         
                       else
                         sender.reply({text: "てすと"})
@@ -376,9 +397,13 @@ class MessengerBotController < ActionController::Base
           sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
           sender.reply({text: "次は好感度アップの言葉を言ってみよう！「5時→9時～私に恋したお坊さん～」と入力してみましょう！"})
        
-          
-          
-                        
+      when "2"
+            @@flag = nil
+             sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
+                      
+      when "3"
+           
+           sender.reply({ text: "脅かさないでくれよ・・・"})    
                               
          
         

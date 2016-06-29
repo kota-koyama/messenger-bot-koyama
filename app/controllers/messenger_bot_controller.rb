@@ -113,85 +113,118 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "思い出たくさんなんだ"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("クロサギ")
+                      elsif ext.include?("クロサギ")|| text.include?("くろさぎ") || text.include?("シロサギ")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "シロサギは例外なく俺の餌だ"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("コード・ブルー")
+                      elsif ext.include?("コード・ブルー")|| text.include?("コードブルー") || text.include?("こーどぶるー")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "ドクターヘリってすごいよね！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("ブザー・ビート")
+                      elsif ext.include?("ブザー・ビート")|| text.include?("ブザービート") || text.include?("ぶざーびーと")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "今度バスケットボールしよ！ワン　オン　ワン！ワンワン♪"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("SUMMER NUDE")
+                      elsif ext.include?("SUMMER NUDE")|| text.include?("サマーヌード") || text.include?("さまーぬーど")
                       @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "ロケ地の海がきれいだったなぁ…今度海いこうね！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("アルジャ")
+                      elsif ext.include?("アルジャ")|| text.include?("あるじゃ") 
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "あいきょでしょ‼︎"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("タッキー")
+                      elsif ext.include?("タッキー")|| text.include?("滝沢") || text.include?("たっきー")
                         @users.yamapoint += 1
                          @users.save
                         sender.reply({text: "俺にとってはいつまでも憧れの人だね！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?("修二と彰")
+                      elsif ext.include?("修二と彰")|| text.include?("彰") || text.include?("あきら")
                         @users.yamapoint += 1
                          @users.save
-                        sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！￥　"})
+                        sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                      elsif ext.include?("修二と彰")|| text.include?("彰") || text.include?("あきら")|| text.include?("青春アミーゴ")|| text.include?("抱いてセニョリータ")
                         @users.yamapoint += 1
                          @users.save
-                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                      elsif ext.include?("白虎隊")|| text.include?("びゃっこ") || text.include?("みねじ")|| text.include?("峰治")
                         @users.yamapoint += 1
                          @users.save
-                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "精米業を営んでおります。"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                      elsif ext.include?("明日のジョー")|| text.include?("明日のじょー") || text.include?("あしたのじょー")|| text.include?("あしたのじょう")
                         @users.yamapoint += 1
                          @users.save
-                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "立つんだ、立つんだジョー"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                    　elsif ext.include?("すねお")|| text.include?("スネ夫") || text.include?("スネオ")|| text.include?("すねちゃま")|| text.include?("スネちゃま")|| text.include?("ほねかわ")|| text.include?("骨川")
                         @users.yamapoint += 1
                          @users.save
-                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "車のCMってお金かけるんだなぁって思う"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                        
-                      elsif ext.include?(("野ブタ" or "のぶた" or "野ぶた"))
+                      
+                      elsif ext.include?("テラフォーマーズ")|| text.include?("テラホー") || text.include?("てらほーまー")|| text.include?("てらふぉーまーず")|| text.include?("ティン")|| text.include?("武藤仁")
                         @users.yamapoint += 1
                          @users.save
-                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({"attachment":{
+                                      "type":"image",
+                                      "payload":{
+                                      "url":"http://kumasim.jp/wp-content/uploads/2015/07/05_01.jpg"
+                                                }
+                                            }
+                                   })
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
+                      elsif ext.include?("sound tripper")|| text.include?("Sound Tripper") || text.include?("Sound tripper")|| text.include?("sound Tripper")
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "聞いてくれてるの！嬉しいな！ラジオの仕事って本当に楽しいんだ。"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                        
+                      elsif @users.yamapoint > 20
+                          @@flag = 4
+                          sender.reply({"attachment":{
+                                          "type":"image",
+                                          "payload":{
+                                          "url":"http://kumasim.jp/wp-content/uploads/2015/07/05_01.jpg"
+                                                    }
+                                                }
+                                       })
+                          sender.reply({text: "なんか、君と話してると楽しいな！いつでも連絡待ってるからね！"})
+                          sender.reply({text: "おめでとう！好感度が21以上になったから、やまPとの関係が発展したよ！"})
                         
                         
                       else
                         sender.reply({text: "てすと"})
                       
                       end
+                      
+          elsif @@flag == 4
+                      if text.include?("おはよう")
                         
+                        sender.reply({ text: "やっほ！" })
+                      
+                      else
+                        sender.reply({ text: "君と会いたいな" })
+                      
+                      end
+                    
                 
           else
                       if text.include?("おはよう")

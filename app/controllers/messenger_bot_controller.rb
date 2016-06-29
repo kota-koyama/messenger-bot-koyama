@@ -67,34 +67,46 @@ class MessengerBotController < ActionController::Base
                       if text.include?("5時→9時～私に恋したお坊さん～")
                          @users.yamapoint += 1
                          @users.save
+                         @@flag = 3
                           sender.reply({ "attachment":{
-                        "type":"template",
-                        "payload":{
-                            "template_type":"generic",
-                            "elements":[
-                                {
-                                    "title":"ドラマみてくれてたんだ！ありがとう！",
-                                    "image_url":"http://im4-a.mbokimg.dena.ne.jp/3/7/027/482665027.1.jpg",
-                                    "subtitle":"DVDも買ってくれたら嬉しいな…",
-                                    "buttons":[
-                                        {
-                                            "type":"web_url",
-                                            "url":"https://www.amazon.co.jp/5%E2%86%929-5%E6%99%82%E3%81%8B%E3%82%899%E6%99%82%E3%81%BE%E3%81%A7-~%E7%A7%81%E3%81%AB%E6%81%8B%E3%81%97%E3%81%9F%E3%81%8A%E5%9D%8A%E3%81%95%E3%82%93~-DVD-BOX/dp/B019BSE9VM",
-                                            "title":"詳細をHPで見る"
-                                        }
-                                        
-                                    ]
-                                }
-                                
-                            ]
-                        }
-                    }
-                })
+                                          "type":"template",
+                                          "payload":{
+                                              "template_type":"generic",
+                                              "elements":[
+                                                  {
+                                                      "title":"ドラマみてくれてたんだ！ありがとう！",
+                                                      "image_url":"http://im4-a.mbokimg.dena.ne.jp/3/7/027/482665027.1.jpg",
+                                                      "subtitle":"DVDも買ってくれたら嬉しいな…",
+                                                      "buttons":[
+                                                          {
+                                                              "type":"web_url",
+                                                              "url":"https://www.amazon.co.jp/5%E2%86%929-5%E6%99%82%E3%81%8B%E3%82%899%E6%99%82%E3%81%BE%E3%81%A7-~%E7%A7%81%E3%81%AB%E6%81%8B%E3%81%97%E3%81%9F%E3%81%8A%E5%9D%8A%E3%81%95%E3%82%93~-DVD-BOX/dp/B019BSE9VM",
+                                                              "title":"詳細をHPで見る"
+                                                          }
+                                                          
+                                                      ]
+                                                  }
+                                                  
+                                              ]
+                                          }
+                                      }
+                                  })
 
                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                           sender.reply({text: "それと、これは悲しいお話なんだけど、もしやまPとうまく行かなかったら「別れる」と入力してね…男の子の選択からやり直せるよ！"})
+                           sender.reply({text: "これで説明は終わり！あとはあなたとやまPだけの時間になります！素敵な恋物語の始まり始まり！"})
                            
                       else
                         sender.reply({text: "やまPだよ!!"})
+                      end
+                      
+          elsif @@flag == 3 
+                      if text.include?("野ブタ" , "のぶた" , "野ぶた")
+                        @users.yamapoint += 1
+                         @users.save
+                        sender.reply({text: "彰だっちゃ"})
+                        sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                      
                       end
                         
                 

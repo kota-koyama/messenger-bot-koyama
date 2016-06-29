@@ -197,17 +197,7 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "聞いてくれてるの！嬉しいな！ラジオの仕事って本当に楽しいんだ。"})
                         sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                         
-                      elsif @users.yamapoint > 20
-                          @@flag = 4
-                          sender.reply({"attachment":{
-                                          "type":"image",
-                                          "payload":{
-                                          "url":"http://kumasim.jp/wp-content/uploads/2015/07/05_01.jpg"
-                                                    }
-                                                }
-                                       })
-                          sender.reply({text: "なんか、君と話してると楽しいな！いつでも連絡待ってるからね！"})
-                          sender.reply({text: "おめでとう！好感度が21以上になったから、やまPとの関係が発展したよ！"})
+                      
                         
                         
                       else

@@ -241,7 +241,7 @@ class MessengerBotController < ActionController::Base
          
          
           elsif @@flag == 4
-                    if rand(10) + 1 == 1
+                    if rand(10) + 1 == 5
                             sender.reply({text: "てすと"}) 
                     
                     else

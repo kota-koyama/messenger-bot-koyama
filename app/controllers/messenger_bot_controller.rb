@@ -17,7 +17,7 @@ class MessengerBotController < ActionController::Base
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
           
         
-          if @flag == 1
+          if @users.flag == 1
             
                       if text.include?("やまP説明書")
                         sender.reply({ text: "これからやまPを攻略します。方法は2つです。"})
@@ -62,12 +62,12 @@ class MessengerBotController < ActionController::Base
                         sender.reply({ text: "やまPだよ"})
                       end  
                       
-          elsif @flag == 2
+          elsif @users.flag == 2
           
                       if text.include?("5時→9時～私に恋したお坊さん～")
                          @users.yamapoint += 1
+                         @users.flag = 3
                          @users.save
-                         @flag = 3
                           sender.reply({ "attachment":{
                                           "type":"template",
                                           "payload":{
@@ -100,11 +100,12 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "やまPだよ!!"})
                       end
                       
-          elsif @flag == 3 
+          elsif @users.flag == 3 
                   
                 if  @users.yamapoint > 20
   
-                      @flag = 4
+                      @users.flag = 4
+                      @users.save
                         sender.reply({ text: "好感度が20を超えたので、やまPとの関係が発展しました！"})
                 
                 else
@@ -390,8 +391,8 @@ class MessengerBotController < ActionController::Base
         
         when "yamasita_choice"
           @users.yamapoint = 1
+          @users.flag = 1
           @users.save
-          @flag = 1
           sender.reply({ text: "やまPに決定！やまPの好感度が#{@users.yamapoint}になったよ！" })
         　sender.reply({ text: "それではやまP攻略のコツを教えるよ！「やまPの説明書」と入力してみてね！"})
        
@@ -408,8 +409,8 @@ class MessengerBotController < ActionController::Base
         
         when "1"
           @users.yamapoint += 1
+          @users.flag = 2
           @users.save
-          @flag = 2
           sender.reply({"attachment":{
             "type":"image",
             "payload":{
@@ -422,7 +423,8 @@ class MessengerBotController < ActionController::Base
           sender.reply({text: "次は好感度アップの言葉を言ってみよう！「5時→9時～私に恋したお坊さん～」と入力してみましょう！"})
        
       when "2"
-            @@flag = nil
+            @users.flag = nil
+            @users.save
              sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
                       
       when "3"

@@ -245,11 +245,36 @@ class MessengerBotController < ActionController::Base
           elsif @users.flag == 4
                     if rand(10) + 1 == 1
                             sender.reply({text: "てすと"}) 
+                            
+                    elsif text == "別れる"
+                          
+                                sender.reply({ "attachment":{
+                                              "type":"template",
+                                              "payload":{
+                                                  "template_type":"button",
+                                                  "text":"本当に俺と別れるの？",
+                                                  "buttons":[
+                                                      {
+                                                          "type":"postback",
+                                                          "title":"はい",
+                                                          "payload":"2"
+                                                      },
+                                                      {
+                                                          "type":"postback",
+                                                          "title":"いいえ",
+                                                          "payload":"3"
+                                                      }
+                                                  ]
+                                              }
+                                           }
+                                        })
+                            　
                     
                     else
                           sender.reply({text: "今は好きしか言いたくない気分なんだ"})
                           sender.reply({text: "好き"})
                           sender.reply({text: "大好き"})
+                          
                           
                     end
                     

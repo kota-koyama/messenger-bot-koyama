@@ -232,6 +232,7 @@ class MessengerBotController < ActionController::Base
                             　
                             
                           else
+                            
                             sender.reply({text: "てすと"})
                           
                           end
@@ -240,7 +241,9 @@ class MessengerBotController < ActionController::Base
          
          
           elsif @@flag == 4
-                      
+                    if rand(10) + 1 == 1
+                            　　sender.reply({text: "てすと"}) 
+                    else
                       if text == "元気？"
                           sender.reply({text: "元気だよ！"})
                       else
@@ -248,6 +251,7 @@ class MessengerBotController < ActionController::Base
                           sender.reply({text: "好き"})
                           sender.reply({text: "大好き"})
                       end
+                    end
                     
                 
           else

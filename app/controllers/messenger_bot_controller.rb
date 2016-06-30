@@ -8,6 +8,7 @@ class MessengerBotController < ActionController::Base
             @users = User.new
             @users.user_id = user_id
             @users.userpoint = 0
+            @users.flag = 0
             @users.save
           
           else
@@ -423,7 +424,7 @@ class MessengerBotController < ActionController::Base
           sender.reply({text: "次は好感度アップの言葉を言ってみよう！「5時→9時～私に恋したお坊さん～」と入力してみましょう！"})
        
       when "2"
-            @users.flag = nil
+            @users.flag = 0
             @users.save
              sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
                       

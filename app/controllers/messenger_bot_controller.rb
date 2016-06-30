@@ -8,19 +8,16 @@ class MessengerBotController < ActionController::Base
             @users = User.new
             @users.user_id = user_id
             @users.userpoint = 0
-            @users.flag = 0
             @users.save
           
           else
             @users = User.find_by(user_id: user_id)
-            @users.flag = 0
-            @users.save
           end
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
           
         
-          if @users.flag == 1
+          if @@flag == 1
             
                       if text.include?("やまP説明書")
                         sender.reply({ text: "これからやまPを攻略します。方法は2つです。"})
@@ -62,15 +59,15 @@ class MessengerBotController < ActionController::Base
                                 })
                                         
                       else
-                        sender.reply({ text: "やまPだよ。「やまP説明書」と入力しよう！"})
+                        sender.reply({ text: "やまPだよ"})
                       end  
                       
-          elsif @users.flag == 2
+          elsif @@flag == 2
           
                       if text.include?("5時→9時～私に恋したお坊さん～")
                          @users.yamapoint += 1
-                         @users.flag = 3
                          @users.save
+                         @@flag = 3
                           sender.reply({ "attachment":{
                                           "type":"template",
                                           "payload":{
@@ -103,12 +100,11 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "やまPだよ!!"})
                       end
                       
-          elsif @users.flag == 3 
+          elsif @@flag == 3 
                   
                 if  @users.yamapoint > 20
   
-                      @users.flag = 4
-                      @users.save
+                      @@flag = 4
                         sender.reply({ text: "好感度が20を超えたので、やまPとの関係が発展しました！"})
                 
                 else
@@ -244,40 +240,14 @@ class MessengerBotController < ActionController::Base
                               
          
          
-          elsif @users.flag == 4
-          
+          elsif @@flag == 4
                     if rand(10) + 1 == 1
                             sender.reply({text: "てすと"}) 
-                            
-                    elsif text == "別れる"
-                          
-                                sender.reply({ "attachment":{
-                                              "type":"template",
-                                              "payload":{
-                                                  "template_type":"button",
-                                                  "text":"本当に俺と別れるの？",
-                                                  "buttons":[
-                                                      {
-                                                          "type":"postback",
-                                                          "title":"はい",
-                                                          "payload":"2"
-                                                      },
-                                                      {
-                                                          "type":"postback",
-                                                          "title":"いいえ",
-                                                          "payload":"3"
-                                                      }
-                                                  ]
-                                              }
-                                           }
-                                        })
-                            　
                     
                     else
                           sender.reply({text: "今は好きしか言いたくない気分なんだ"})
                           sender.reply({text: "好き"})
                           sender.reply({text: "大好き"})
-                          
                           
                     end
                     
@@ -320,7 +290,6 @@ class MessengerBotController < ActionController::Base
                       else 
                         
                         @users.userpoint += 1
-                        @users.flag = 0
                         @users.save
                             sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
                       
@@ -421,8 +390,8 @@ class MessengerBotController < ActionController::Base
         
         when "yamasita_choice"
           @users.yamapoint = 1
-          @users.flag = 1
           @users.save
+          @@flag = 1
           sender.reply({ text: "やまPに決定！やまPの好感度が#{@users.yamapoint}になったよ！" })
         　sender.reply({ text: "それではやまP攻略のコツを教えるよ！「やまPの説明書」と入力してみてね！"})
        
@@ -439,8 +408,8 @@ class MessengerBotController < ActionController::Base
         
         when "1"
           @users.yamapoint += 1
-          @users.flag = 2
           @users.save
+          @@flag = 2
           sender.reply({"attachment":{
             "type":"image",
             "payload":{
@@ -453,8 +422,7 @@ class MessengerBotController < ActionController::Base
           sender.reply({text: "次は好感度アップの言葉を言ってみよう！「5時→9時～私に恋したお坊さん～」と入力してみましょう！"})
        
       when "2"
-            @users.flag = 0
-            @users.save
+            @@flag = nil
              sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
                       
       when "3"

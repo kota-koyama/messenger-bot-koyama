@@ -13,6 +13,8 @@ class MessengerBotController < ActionController::Base
           
           else
             @users = User.find_by(user_id: user_id)
+            @users.flag = 0
+            @users.save
           end
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
@@ -318,6 +320,7 @@ class MessengerBotController < ActionController::Base
                       else 
                         
                         @users.userpoint += 1
+                        @users.flag = 0
                         @users.save
                             sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
                       

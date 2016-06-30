@@ -15,8 +15,7 @@ class MessengerBotController < ActionController::Base
           end
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-      
-periodically_call_remote
+
         
           if @@flag == 1
             

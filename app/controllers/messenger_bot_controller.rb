@@ -15,7 +15,8 @@ class MessengerBotController < ActionController::Base
           end
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-          
+      
+periodically_call_remote
         
           if @@flag == 1
             
@@ -243,6 +244,29 @@ class MessengerBotController < ActionController::Base
           elsif @@flag == 4
                     if rand(10) + 1 == 5
                             sender.reply({text: "てすと"}) 
+                            
+                    elsif text == "別れる"
+                          
+                                sender.reply({ "attachment":{
+                                              "type":"template",
+                                              "payload":{
+                                                  "template_type":"button",
+                                                  "text":"本当に俺と別れるの？",
+                                                  "buttons":[
+                                                      {
+                                                          "type":"postback",
+                                                          "title":"はい",
+                                                          "payload":"2"
+                                                      },
+                                                      {
+                                                          "type":"postback",
+                                                          "title":"いいえ",
+                                                          "payload":"3"
+                                                      }
+                                                  ]
+                                              }
+                                           }
+                                        })
                     
                     else
                           sender.reply({text: "今は好きしか言いたくない気分なんだ"})

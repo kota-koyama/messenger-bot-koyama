@@ -416,8 +416,7 @@ periodically_call_remote
           @users.yamapoint = 1
           @users.save
           @@flag = 1
-          sender.reply({ text: "やまPに決定！やまPの好感度が#{@users.yamapoint}になったよ！" })
-        　sender.reply({ text: "それではやまP攻略のコツを教えるよ！「やまPの説明書」と入力してみてね！"})
+          sender.reply({ text: "やまPに決定！やまPの好感度が#{@users.yamapoint}になったよ！それではやまP攻略のコツを教えるよ！「やまPの説明書」と入力してみてね！" })
        
           
         when "haruka_choice"

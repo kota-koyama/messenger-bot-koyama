@@ -1,5 +1,11 @@
 class MessengerBotController < ActionController::Base
   
+    require 'json'
+    require 'open-uri'
+    require 'uri'
+    require 'openssl'
+    require 'net/http'
+  
   USER_LOCAL_ID = 'b8d9c896e319e72ff91a'
 
       def message(event, sender)

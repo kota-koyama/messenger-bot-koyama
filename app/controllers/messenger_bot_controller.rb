@@ -117,7 +117,6 @@ class MessengerBotController < ActionController::Base
                 else
           
                           if text.include?("のぶた") || text.include?("野ブタ") || text.include?("野ぶた") 
-                            
                             @users.yamapoint += 1
                              @users.save
                             sender.reply({text: "彰だっちゃ"})
@@ -242,7 +241,7 @@ class MessengerBotController < ActionController::Base
                           else
                              @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
                            @@response = JSON.load(open(@@localapi).read)
-                           sender.reply({ text: "＃{@@response['result']}" })
+                           sender.reply({ text: "#{@@response['result']}" })
                           　
                           end
                 end

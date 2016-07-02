@@ -235,13 +235,10 @@ class MessengerBotController < ActionController::Base
                                               }
                                            }
                                         })
-                            　
-                            
                           else
-                             @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
-                           @@response = JSON.load(open(@@localapi).read)
-                           sender.reply({ text: "#{@@response['result']}" })
-                          　
+                              @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
+                              @@response = JSON.load(open(@@localapi).read)
+                              sender.reply({ text: "#{@@response['result']}" })
                           end
                 end
                               

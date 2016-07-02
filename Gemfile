@@ -48,5 +48,10 @@ group :development do
   gem 'spring'
   
   gem "bing-search"
+  
+  gem 'json'
+  
+  gem 'rabl'
+  
 end
 

@@ -187,8 +187,7 @@ class MessengerBotController < ActionController::Base
                              @users.save
                             sender.reply({text: "立つんだ、立つんだジョー"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                            
-                        　elsif text.include?("すねお") || text.include?("スネ夫") || text.include?("スネオ") || text.include?("すねちゃま") || text.include?("スネちゃま") || text.include?("ほねかわ") || text.include?("骨川")
+                          elsif text.include?("すねお") || text.include?("スネ夫") || text.include?("スネオ") || text.include?("すねちゃま") || text.include?("スネちゃま") || text.include?("ほねかわ") || text.include?("骨川")
                             @users.yamapoint += 1
                              @users.save
                             sender.reply({text: "車のCMってお金かけるんだなぁって思う"})

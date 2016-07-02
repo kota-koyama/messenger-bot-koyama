@@ -15,7 +15,6 @@ class MessengerBotController < ActionController::Base
           end
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-
         
           if @@flag == 1
             
@@ -110,149 +109,84 @@ class MessengerBotController < ActionController::Base
                 else
           
                           if text.include?("のぶた") || text.include?("野ブタ") || text.include?("野ぶた") 
-                            if @@good1 == 1
-                              sender.reply({text: "次の活躍も期待してね！"})
-                              else
-                                @@good1 = 1
-                                @users.yamapoint += 1
-                                 @users.save
-                                sender.reply({text: "彰だっちゃ"})
-                                sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                            end
+                            @users.yamapoint += 1
+                             @users.save
+                            sender.reply({text: "彰だっちゃ"})
+                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("千葉県")
-                            if @@good2 == 1
-                                sender.reply({text: "これからも千葉県をよろしくね！"})
-                              else
-                                @@good2 = 1
-                                @users.yamapoint += 1
-                                 @users.save
-                                sender.reply({text: "思い出たくさんなんだ"})
-                                sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                            end
+                            @users.yamapoint += 1
+                             @users.save
+                            sender.reply({text: "思い出たくさんなんだ"})
+                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("クロサギ") || text.include?("くろさぎ") || text.include?("シロサギ")
-                             if @@good3 == 1
-                                  sender.reply({text: "詐欺には気をつけてね！"})
-                                else
-                                  @@good3 = 1
-                                  @users.yamapoint += 1
-                                   @users.save
-                                  sender.reply({text: "シロサギは例外なく俺の餌だ"})
-                                  sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                             end
-                             
+                            @users.yamapoint += 1
+                             @users.save
+                            sender.reply({text: "シロサギは例外なく俺の餌だ"})
+                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                            
                           elsif text.include?("コード・ブルー") || text.include?("コードブルー") || text.include?("こーどぶるー")
-                             if @@good4 == 1
-                                  sender.reply({text: "生まれ変わったら医者かなぁ"})
-                                else
-                                  @@good4 = 1
-                                  @users.yamapoint += 1
-                                   @users.save
-                                  sender.reply({text: "ドクターヘリってすごいよね！"})
-                                  sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                             end
+                            @users.yamapoint += 1
+                             @users.save
+                            sender.reply({text: "ドクターヘリってすごいよね！"})
+                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("ブザー・ビート") || text.include?("ブザービート") || text.include?("ぶざーびーと")
-                             if @@good5 == 1
-                                  sender.reply({text: "ブザービートとか決めてみたい！"})
-                                else
-                                  @@good5 = 1
-                                  @users.yamapoint += 1
-                                   @users.save
-                                  sender.reply({text: "今度バスケットボールしよ！ワン　オン　ワン！ワンワン♪"})
-                                  sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                             end
-                                  
+                            @users.yamapoint += 1
+                             @users.save
+                            sender.reply({text: "今度バスケットボールしよ！ワン　オン　ワン！ワンワン♪"})
+                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                            
                           elsif text.include?("SUMMER NUDE") || text.include?("サマーヌード") || text.include?("さまーぬーど")
-                             if @@good6 == 1
-                                  sender.reply({text: "夏休みが楽しみだ！・・・夏休みってあるのか？"})
-                                else
-                                  @@good6 = 1
-                                  @users.yamapoint += 1 
-                                     @users.save
-                                    sender.reply({text: "ロケ地の海がきれいだったなぁ…今度海いこうね！"})
-                                    sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                             end
-                             
+                          @users.yamapoint += 1 
+                             @users.save
+                            sender.reply({text: "ロケ地の海がきれいだったなぁ…今度海いこうね！"})
+                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                            
                           elsif text.include?("アルジャ") || text.include?("あるじゃ") 
-                             if @@good7 == 1
-                                  sender.reply({text: "これからも千葉県をよろしくね！"})
-                                else
-                                  @@good7 = 1
-                                  @users.yamapoint += 1
-                                   @users.save
-                                  sender.reply({text: "あいきょでしょ‼︎"})
-                                  sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                           　 end
-                                
+                            @users.yamapoint += 1
+                             @users.save
+                            sender.reply({text: "あいきょでしょ‼︎"})
+                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                            
                           elsif text.include?("タッキー" )|| text.include?("滝沢") || text.include?("たっきー")
-                             if @@good8 == 1
-                                  sender.reply({text: "やまPと命名してくれたのもタッキーなんだ！"})
-                                else
-                                  @@good8 = 1
-                                  @users.yamapoint += 1
-                                   @users.save
-                                  sender.reply({text: "俺にとってはいつまでも憧れの人だね！"})
-                                  sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                             end
+                            @users.yamapoint += 1
+                             @users.save
+                            sender.reply({text: "俺にとってはいつまでも憧れの人だね！"})
+                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("修二と彰") || text.include?("彰") || text.include?("あきら")
-                           if @@good14 == 1
-                                sender.reply({text: "これからも千葉県をよろしくね！"})
-                              else
-                                @@good14 = 1
                             @users.yamapoint += 1
                              @users.save
                             sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                           end
+                            
                           elsif text.include?("修二と彰") || text.include?("彰") || text.include?("あきら") || text.include?("青春アミーゴ") || text.include?("抱いてセニョリータ")
-                           if @@good9 == 1
-                                sender.reply({text: "これからも千葉県をよろしくね！"})
-                              else
-                                @@good9 = 1
                             @users.yamapoint += 1
                              @users.save
                             sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                           end
+                            
                           elsif text.include?("白虎隊") || text.include?("びゃっこ") || text.include?("みねじ") || text.include?("峰治")
-                           if @@good10 == 1
-                                sender.reply({text: "これからも千葉県をよろしくね！"})
-                              else
-                                @@good10 = 1
                             @users.yamapoint += 1
                              @users.save
                             sender.reply({text: "精米業を営んでおります。"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                           end
+                            
                           elsif text.include?("明日のジョー") || text.include?("明日のじょー") || text.include?("あしたのじょー") || text.include?("あしたのじょう")
-                           if @@good11 == 1
-                                sender.reply({text: "これからも千葉県をよろしくね！"})
-                              else
-                                @@good11 = 1
                             @users.yamapoint += 1
                              @users.save
                             sender.reply({text: "立つんだ、立つんだジョー"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                           end
+                            
                         　elsif text.include?("すねお") || text.include?("スネ夫") || text.include?("スネオ") || text.include?("すねちゃま") || text.include?("スネちゃま") || text.include?("ほねかわ") || text.include?("骨川")
-                            if @@good12 == 1
-                            sender.reply({text: "これからも千葉県をよろしくね！"})
-                            else
-                            @@good12 = 1
                             @users.yamapoint += 1
-                            @users.save
+                             @users.save
                             sender.reply({text: "車のCMってお金かけるんだなぁって思う"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                            end
-                           
+                          
                           elsif text.include?("テラフォーマーズ") || text.include?("テラホー") || text.include?("てらほーまー") || text.include?("てらふぉーまーず") || text.include?("ティン" ) || text.include?("武藤仁")
-                           if @@good13 == 1
-                                sender.reply({text: "これからも千葉県をよろしくね！"})
-                              else
-                                @@good13 = 1
                             @users.yamapoint += 1
                              @users.save
                             sender.reply({"attachment":{
@@ -263,7 +197,7 @@ class MessengerBotController < ActionController::Base
                                                 }
                                        })
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                           end 
+                            
                           elsif text.include?("sound tripper") || text.include?("Sound Tripper") || text.include?("Sound tripper") || text.include?("sound Tripper")
                             @users.yamapoint += 1
                              @users.save
@@ -382,10 +316,10 @@ class MessengerBotController < ActionController::Base
                             sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
                       
                       end
-          end          
+                      
+          end
       end
-        
-      
+                  
 
   def delivery(event, sender)
   end

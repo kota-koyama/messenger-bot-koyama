@@ -241,7 +241,8 @@ class MessengerBotController < ActionController::Base
                           else
                             @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
                           　@@api = JSON.load(open(@@localapi).read)
-                          　sender.reply({ text: "#{@@localapi}" })
+                          　@@results = @@api['result']
+                          　sender.reply({ text: "#{@@results}" })
                             
                           end
                 end

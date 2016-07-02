@@ -1,4 +1,6 @@
 class MessengerBotController < ActionController::Base
+  
+  USER_LOCAL_ID = 'b8d9c896e319e72ff91a'
 
       def message(event, sender)
             text = event['message']['text']
@@ -231,8 +233,9 @@ class MessengerBotController < ActionController::Base
                             　
                             
                           else
-                            localapi =URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
+                            localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
                           　JSON.load(open(localapi).read)
+                          　sender.reply({ text: "#{localapi}" })
                             
                           end
                 end

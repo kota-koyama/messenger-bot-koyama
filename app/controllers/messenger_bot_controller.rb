@@ -24,9 +24,9 @@ class MessengerBotController < ActionController::Base
           
           # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
         
-          if @@flag == 1
+          if @users.userpoint == 1
             
-                      if text.include?("やまP説明書")
+                      if text.include?("説明書")
                         sender.reply({ text: "これからやまPを攻略します。方法は2つです。"})
                         sender.reply({ text: "一つ目は、時々発生する選択しイベントで評価の選択肢を選択することです。選択によって付与されるポイントが変わってくるので適切とおもわれる回答を選択しましょう!選択によっては減点されてしまうので注意！"})
                         sender.reply({ text: "二つ目は、日常の会話の中でやまPが喜ぶ言葉を見つけましょう！インターネットで「やまP」のことを調べてみましょう！やまPの好きなものや、やまPに関連することを入力してみると何かが起こるかも？逆にやまPが嫌いなことを発言しないように注意！"})
@@ -69,12 +69,12 @@ class MessengerBotController < ActionController::Base
                         sender.reply({ text: "やまPだよ"})
                       end  
                       
-          elsif @@flag == 2
+          elsif @users.userpoint == 2
           
                       if text.include?("5時→9時～私に恋したお坊さん～")
+                        @users.userpoint = 3
                          @users.yamapoint += 1
                          @users.save
-                         @@flag = 3
                           sender.reply({ "attachment":{
                                           "type":"template",
                                           "payload":{
@@ -107,11 +107,12 @@ class MessengerBotController < ActionController::Base
                         sender.reply({text: "やまPだよ!!"})
                       end
                       
-          elsif @@flag == 3 
+          elsif @users.userpoint == 3 
                   
                 if  @users.yamapoint > 20
   
-                      @@flag = 4
+                      @users.userpoint = 4
+                      @users.save
                         sender.reply({ text: "好感度が20を超えたので、やまPとの関係が発展しました！"})
                 
                 else
@@ -244,7 +245,7 @@ class MessengerBotController < ActionController::Base
                               
          
          
-          elsif @@flag == 4
+          elsif @users.userpoint == 4
                     if rand(10) + 1 == 5
                             sender.reply({text: "てすと"}) 
                             
@@ -314,12 +315,8 @@ class MessengerBotController < ActionController::Base
                                         })
                                         
                                   
-                      else 
-                        
-                        @users.userpoint += 1
-                        @users.save
+                      else
                             sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
-                      
                       end
                       
           end
@@ -416,9 +413,9 @@ class MessengerBotController < ActionController::Base
         })
         
         when "yamasita_choice"
+          @users.userpoint = 1
           @users.yamapoint = 1
           @users.save
-          @@flag = 1
           sender.reply({ text: "やまPに決定！やまPの好感度が#{@users.yamapoint}になったよ！それではやまP攻略のコツを教えるよ！「やまPの説明書」と入力してみてね！" })
        
           
@@ -433,9 +430,9 @@ class MessengerBotController < ActionController::Base
      
         
         when "1"
+          @users.userpoint = 2
           @users.yamapoint += 1
           @users.save
-          @@flag = 2
           sender.reply({"attachment":{
             "type":"image",
             "payload":{
@@ -447,13 +444,13 @@ class MessengerBotController < ActionController::Base
           sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
           sender.reply({text: "次は好感度アップの言葉を言ってみよう！「5時→9時～私に恋したお坊さん～」と入力してみましょう！"})
        
-      when "2"
-            @@flag = nil
-             sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
-                      
-      when "3"
-           
-           sender.reply({ text: "脅かさないでくれよ・・・"})    
+        when "2"
+            @users.userpoint = 0
+            sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
+                        
+        when "3"
+             
+             sender.reply({ text: "脅かさないでくれよ・・・"})    
                               
          
         

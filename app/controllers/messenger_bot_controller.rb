@@ -110,7 +110,7 @@ class MessengerBotController < ActionController::Base
                       
           elsif @users.userpoint == 3 
                   
-                if  @users.yamapoint > 20
+                if  @users.yamapoint > 5
   
                       @users.userpoint = 4
                       @users.save
@@ -277,9 +277,10 @@ class MessengerBotController < ActionController::Base
                                         })
                     
                     else
+                      @@nick_name = URI.escape("https://chatbot-api.userlocal.jp/api/name?name=#{@profile['last_name']} #{@profile['first_name']}&key=#{USER_LOCAL_ID}")
+                      @@oknickname = JSON.load(open(@@nick_name).read)
+                      sender.reply({text: "#{@@oknickname['nickname']}"})
                           sender.reply({text: "今は好きしか言いたくない気分なんだ"})
-                          sender.reply({text: "好き"})
-                          sender.reply({text: "大好き"})
                           
                     end
                     

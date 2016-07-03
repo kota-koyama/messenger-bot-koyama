@@ -238,7 +238,7 @@ class MessengerBotController < ActionController::Base
                                            }
                                         })
                           elsif text == "テスト"
-                                sender.reply({ text: "#{@profile['last_name']} #{@profile['first_name']}さんこんにちは！" })
+                                sender.reply({ text: "#{@profile['last_name']} #{@profile['first_name']}さんこんにちは！#{@profile['gender']}" })
        
                           else
                               @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")

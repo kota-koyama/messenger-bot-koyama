@@ -5,12 +5,13 @@ class MessengerBotController < ActionController::Base
     require 'uri'
     require 'openssl'
     require 'net/http'
-  
+    
   USER_LOCAL_ID = 'b8d9c896e319e72ff91a'
 
       def message(event, sender)
             text = event['message']['text']
             user_id = event['sender']['id']
+            @profile = sender.get_profile[:body]
           
           if User.find_by(user_id: user_id).nil?
             @users = User.new
@@ -236,6 +237,9 @@ class MessengerBotController < ActionController::Base
                                               }
                                            }
                                         })
+                          elsif text == "テスト"
+                                sender.reply({ text: "#{@profile['last_name']} #{@profile['first_name']}さんこんにちは！" })
+       
                           else
                               @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
                               @@response = JSON.load(open(@@localapi).read)

@@ -246,7 +246,7 @@ class MessengerBotController < ActionController::Base
        
                           else
                               
-                              sender.reply({ text: "#{@@response['result']}" })
+                              sender.reply({ text: "#{@response['result']}" })
                           end
                 end
                               

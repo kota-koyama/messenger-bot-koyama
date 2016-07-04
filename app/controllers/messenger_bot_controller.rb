@@ -132,7 +132,7 @@ class MessengerBotController < ActionController::Base
                           elsif text.include?("千葉県")
                             @users.yamapoint += 1
                              @users.save
-                            sender.reply({text: "#{@oknickname['result']['nickname'].first}も千葉県に遊びに来てね！"})
+                            sender.reply({text: "#{@profile['last_name']}も千葉県に遊びに来てね！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("クロサギ") || text.include?("くろさぎ") || text.include?("シロサギ")
@@ -150,13 +150,13 @@ class MessengerBotController < ActionController::Base
                           elsif text.include?("ブザー・ビート") || text.include?("ブザービート") || text.include?("ぶざーびーと")
                             @users.yamapoint += 1
                              @users.save
-                            sender.reply({text: "今度バスケットボールしよ！#{@oknickname['result']['nickname'].first}とワン　オン　ワン！ワンワン♪"})
+                            sender.reply({text: "今度バスケットボールしよ！#{@profile['last_name']}とワン　オン　ワン！ワンワン♪"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("SUMMER NUDE") || text.include?("サマーヌード") || text.include?("さまーぬーど")
                           @users.yamapoint += 1 
                              @users.save
-                            sender.reply({text: "ロケ地の海がきれいだったなぁ…#{@oknickname['result']['nickname'].first}と一緒に海いきたいな！"})
+                            sender.reply({text: "ロケ地の海がきれいだったなぁ…#{@profile['last_name']}と一緒に海いきたいな！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("アルジャ") || text.include?("あるじゃ") 
@@ -173,7 +173,7 @@ class MessengerBotController < ActionController::Base
                           elsif text.include?("修二と彰") || text.include?("彰") || text.include?("あきら")
                             @users.yamapoint += 1
                              @users.save
-                            sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！そうだ#{@oknickname['result']['nickname'].first}カラオケ行こう！"})
+                            sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！そうだ#{@profile['last_name']}カラオケ行こう！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                           
                           elsif text.include?("白虎隊") || text.include?("びゃっこ") || text.include?("みねじ") || text.include?("峰治")
@@ -185,7 +185,7 @@ class MessengerBotController < ActionController::Base
                           elsif text.include?("明日のジョー") || text.include?("明日のじょー") || text.include?("あしたのじょー") || text.include?("あしたのじょう")
                             @users.yamapoint += 1
                              @users.save
-                            sender.reply({text: "立つんだ、立つんだ#{@oknickname['result']['nickname'].first}"})
+                            sender.reply({text: "立つんだ、立つんだ#{@profile['last_name']}"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                           elsif text.include?("すねお") || text.include?("スネ夫") || text.include?("スネオ") || text.include?("すねちゃま") || text.include?("スネちゃま") || text.include?("ほねかわ") || text.include?("骨川")
                             @users.yamapoint += 1

@@ -401,14 +401,14 @@ class MessengerBotController < ActionController::Base
                         
                         @@nick_name = URI.escape("https://chatbot-api.userlocal.jp/api/name?name=#{@profile['last_name']} #{@profile['first_name']}&key=#{USER_LOCAL_ID}")
                         @@oknickname = JSON.load(open(@@nick_name).read)
-                        sender.reply({text: "#{@@oknickname['result']}"})
+                        sender.reply({text: "#{@@oknickname['result']['nickname']}"})
                             sender.reply({text: "今は好きしか言いたくない気分なんだ"})
                         
                     else
                       
                       @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
                       @@response = JSON.load(open(@@localapi).read)
-                      sender.reply({ text: "#{@@response['nickname']}" })
+                      sender.reply({ text: "#{@@response['result']}" })
                       
                     end
                     

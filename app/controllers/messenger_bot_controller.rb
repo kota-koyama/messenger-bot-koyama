@@ -33,10 +33,8 @@ class MessengerBotController < ActionController::Base
           if @users.userpoint == 1
             
                       if text.include?("説明書")
-                        sender.reply({ text: "これからやまPを攻略します。方法は2つです。"})
-                        sender.reply({ text: "一つ目は、時々発生する選択しイベントで評価の選択肢を選択することです。選択によって付与されるポイントが変わってくるので適切とおもわれる回答を選択しましょう!選択によっては減点されてしまうので注意！"})
-                        sender.reply({ text: "二つ目は、日常の会話の中でやまPが喜ぶ言葉を見つけましょう！インターネットで「やまP」のことを調べてみましょう！やまPの好きなものや、やまPに関連することを入力してみると何かが起こるかも？逆にやまPが嫌いなことを発言しないように注意！"})
-                        sender.reply({ text: "好感度をあげるとやまPとの関係が発展して返ってくる言葉が変化してくるかも・・・！"})
+                        sender.reply({ text: "これからやまPを攻略するよ！。方法は2つ！"})
+                        sender.reply({ text: "一つ目は、時々発生する選択肢イベント！やまPの質問に選択肢で回答！選択によって好感度UP or DOWN！"})
                         sender.reply({ text: "それでは選択肢イベントをためしてみよう！"})
                         sender.reply({"attachment":{
                                       "type":"image",
@@ -77,7 +75,7 @@ class MessengerBotController < ActionController::Base
                       
           elsif @users.userpoint == 2
           
-                      if text.include?("5時→9時～私に恋したお坊さん～")
+                      if text.include?("5時→9時")||text.include?("5じ9じ")||text.include?("5時9時")||text.include?("５時９時")||text.include?("５じ９じ")
                         @users.userpoint = 3
                          @users.yamapoint += 1
                          @users.save
@@ -106,7 +104,8 @@ class MessengerBotController < ActionController::Base
                                   })
 
                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                           sender.reply({text: "それと、これは悲しいお話なんだけど、もしやまPとうまく行かなかったら「別れる」と入力してね…男の子の選択からやり直せるよ！"})
+                           sender.reply({text: "グレート！"})
+                           sender.reply({text: "あと一つだけ・・・「別れる」と打つとやまPと別れて男の子を選択し直せるよ・・・"})
                            sender.reply({text: "これで説明は終わり！あとはあなたとやまPだけの時間になります！素敵な恋物語の始まり始まり！"})
                            
                       else
@@ -133,7 +132,7 @@ class MessengerBotController < ActionController::Base
                           elsif text.include?("千葉県")
                             @users.yamapoint += 1
                              @users.save
-                            sender.reply({text: "思い出たくさんなんだ"})
+                            sender.reply({text: "#{@oknickname['result']['nickname'].first}も千葉県に遊びに来てね！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("クロサギ") || text.include?("くろさぎ") || text.include?("シロサギ")
@@ -151,13 +150,13 @@ class MessengerBotController < ActionController::Base
                           elsif text.include?("ブザー・ビート") || text.include?("ブザービート") || text.include?("ぶざーびーと")
                             @users.yamapoint += 1
                              @users.save
-                            sender.reply({text: "今度バスケットボールしよ！ワン　オン　ワン！ワンワン♪"})
+                            sender.reply({text: "今度バスケットボールしよ！#{@oknickname['result']['nickname'].first}とワン　オン　ワン！ワンワン♪"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("SUMMER NUDE") || text.include?("サマーヌード") || text.include?("さまーぬーど")
                           @users.yamapoint += 1 
                              @users.save
-                            sender.reply({text: "ロケ地の海がきれいだったなぁ…今度海いこうね！"})
+                            sender.reply({text: "ロケ地の海がきれいだったなぁ…#{@oknickname['result']['nickname'].first}と一緒に海いきたいな！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
                           elsif text.include?("アルジャ") || text.include?("あるじゃ") 
@@ -174,15 +173,9 @@ class MessengerBotController < ActionController::Base
                           elsif text.include?("修二と彰") || text.include?("彰") || text.include?("あきら")
                             @users.yamapoint += 1
                              @users.save
-                            sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！"})
+                            sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！そうだ#{@oknickname['result']['nickname'].first}カラオケ行こう！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                            
-                          elsif text.include?("修二と彰") || text.include?("彰") || text.include?("あきら") || text.include?("青春アミーゴ") || text.include?("抱いてセニョリータ")
-                            @users.yamapoint += 1
-                             @users.save
-                            sender.reply({text: "なつかしいなぁ…カラオケランキング良くて嬉しかったな！"})
-                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                            
+                          
                           elsif text.include?("白虎隊") || text.include?("びゃっこ") || text.include?("みねじ") || text.include?("峰治")
                             @users.yamapoint += 1
                              @users.save
@@ -192,7 +185,7 @@ class MessengerBotController < ActionController::Base
                           elsif text.include?("明日のジョー") || text.include?("明日のじょー") || text.include?("あしたのじょー") || text.include?("あしたのじょう")
                             @users.yamapoint += 1
                              @users.save
-                            sender.reply({text: "立つんだ、立つんだジョー"})
+                            sender.reply({text: "立つんだ、立つんだ#{@oknickname['result']['nickname'].first}"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                           elsif text.include?("すねお") || text.include?("スネ夫") || text.include?("スネオ") || text.include?("すねちゃま") || text.include?("スネちゃま") || text.include?("ほねかわ") || text.include?("骨川")
                             @users.yamapoint += 1
@@ -641,7 +634,10 @@ class MessengerBotController < ActionController::Base
          })
           sender.reply({text: "性別なんてなんだって構わないさ！これからよろしく！"})
           sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-          sender.reply({text: "次は好感度アップの言葉を言ってみよう！「5時→9時～私に恋したお坊さん～」と入力してみましょう！"})
+          sender.reply({text: "ナイス！やまPのハートをバッチリつかみ始めてるよ！"})
+          sender.reply({text: "二つ目は、やまPに関することを入力！場合によっては好感度UP or DOWN！"})
+          sender.reply({text: "やまPに「5時→9時」と送ってみよう！"})
+          
        
         when "2"
             @users.userpoint = 0

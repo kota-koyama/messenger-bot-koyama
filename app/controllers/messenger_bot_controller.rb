@@ -14,6 +14,8 @@ class MessengerBotController < ActionController::Base
             @profile = sender.get_profile[:body]
             @nick_name = URI.escape("https://chatbot-api.userlocal.jp/api/name?name=#{@profile['last_name']} #{@profile['first_name']}&key=#{USER_LOCAL_ID}")
             @oknickname = JSON.load(open(@nick_name).read)
+            @localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
+            @response = JSON.load(open(@localapi).read)
           
           if User.find_by(user_id: user_id).nil?
             @users = User.new
@@ -249,8 +251,7 @@ class MessengerBotController < ActionController::Base
                                 sender.reply({ text: "#{@profile['last_name']} #{@profile['first_name']}さんこんにちは！#{@profile['gender']}" })
        
                           else
-                              @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
-                              @@response = JSON.load(open(@@localapi).read)
+                              
                               sender.reply({ text: "#{@@response['result']}" })
                           end
                 end
@@ -422,9 +423,7 @@ class MessengerBotController < ActionController::Base
                         
                        
                         else   
-                          @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
-                          @@response = JSON.load(open(@@localapi).read)
-                          sender.reply({ text: "#{@@response['result']}" })
+                          sender.reply({ text: "#{@response['result']}" })
                         end
                       
                     end
@@ -433,7 +432,7 @@ class MessengerBotController < ActionController::Base
                 
           elsif @users.userpoint == 5
                 
-                sender.reply({ text: "#{@@response['result']}" })
+                sender.reply({ text: "#{@response['result']}" })
                     
                 
           elsif @users.userpoint == 0

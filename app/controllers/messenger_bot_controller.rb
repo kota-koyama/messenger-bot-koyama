@@ -12,6 +12,8 @@ class MessengerBotController < ActionController::Base
             text = event['message']['text']
             user_id = event['sender']['id']
             @profile = sender.get_profile[:body]
+            @nick_name = URI.escape("https://chatbot-api.userlocal.jp/api/name?name=#{@profile['last_name']} #{@profile['first_name']}&key=#{USER_LOCAL_ID}")
+            @oknickname = JSON.load(open(@nick_name).read)
           
           if User.find_by(user_id: user_id).nil?
             @users = User.new
@@ -114,7 +116,8 @@ class MessengerBotController < ActionController::Base
   
                       @users.userpoint = 4
                       @users.save
-                        sender.reply({ text: "好感度が20を超えたので、やまPとの関係が発展しました！"})
+                        sender.reply({ text: "好感度が5を超えたので、やまPとの関係が発展しました！"})
+                        sender.reply({text: "#{@profile['last_name']}と話してると楽しいな！仲良くなってきたしアダ名で呼びたいなぁ・・・#{@oknickname['result']['nickname'].first}って呼ぶね！"})
                 
                 else
           
@@ -159,7 +162,6 @@ class MessengerBotController < ActionController::Base
                              @users.save
                             sender.reply({text: "あいきょでしょ‼︎"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                            
                           elsif text.include?("タッキー" )|| text.include?("滝沢") || text.include?("たっきー")
                             @users.yamapoint += 1
                              @users.save
@@ -211,8 +213,14 @@ class MessengerBotController < ActionController::Base
                             @users.yamapoint += 1
                              @users.save
                             sender.reply({text: "聞いてくれてるの！嬉しいな！ラジオの仕事って本当に楽しいんだ。"})
+                                  sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                                  
+                          elsif text.include?("プロポーズ") || text.include?("大作戦") 
+                            @users.yamapoint += 1
+                             @users.save
+                            sender.reply({text: "ハレルヤー・・・チャンス！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                           
+                          
                          
                             
                           elsif text == "別れる"
@@ -250,56 +258,20 @@ class MessengerBotController < ActionController::Base
          
          
           elsif @users.userpoint == 4
-                    if rand(10) + 1 == 5
-                            sender.reply({text: "てすと"}) 
-                    elsif text.include?("のぶた") || text.include?("野ブタ") || text.include?("野ぶた") 
+                    
+                if @users.yamapoint > 10
+                   @users.userpoint = 5
+                      @users.save
+                        sender.reply({ text: "好感度が10を超えたので、やまPとの関係が発展しました！"})
+                        sender.reply({text: "俺、#{@profile['first_name']}の事好きになっちゃった。"})
+                else
+                  
+                    if text.include?("親子丼" )|| text.include?("おやこどん")
                             @users.yamapoint += 1
                              @users.save
-                            sender.reply({text: "彰だっちゃ"})
+                            sender.reply({text: "親子丼大好き！"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                             
-                    elsif text.include?("千葉県")
-                      @users.yamapoint += 1
-                       @users.save
-                      sender.reply({text: "思い出たくさんなんだ"})
-                      sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                      
-                    elsif text.include?("クロサギ") || text.include?("くろさぎ") || text.include?("シロサギ")
-                      @users.yamapoint += 1
-                       @users.save
-                      sender.reply({text: "シロサギは例外なく俺の餌だ"})
-                      sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                      
-                    elsif text.include?("コード・ブルー") || text.include?("コードブルー") || text.include?("こーどぶるー")
-                      @users.yamapoint += 1
-                       @users.save
-                      sender.reply({text: "ドクターヘリってすごいよね！"})
-                      sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                      
-                    elsif text.include?("ブザー・ビート") || text.include?("ブザービート") || text.include?("ぶざーびーと")
-                      @users.yamapoint += 1
-                       @users.save
-                      sender.reply({text: "今度バスケットボールしよ！ワン　オン　ワン！ワンワン♪"})
-                      sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                      
-                    elsif text.include?("SUMMER NUDE") || text.include?("サマーヌード") || text.include?("さまーぬーど")
-                    @users.yamapoint += 1 
-                       @users.save
-                      sender.reply({text: "ロケ地の海がきれいだったなぁ…今度海いこうね！"})
-                      sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                      
-                    elsif text.include?("アルジャ") || text.include?("あるじゃ") 
-                      @users.yamapoint += 1
-                       @users.save
-                      sender.reply({text: "あいきょでしょ‼︎"})
-                      sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                      
-                    elsif text.include?("タッキー" )|| text.include?("滝沢") || text.include?("たっきー")
-                      @users.yamapoint += 1
-                       @users.save
-                      sender.reply({text: "俺にとってはいつまでも憧れの人だね！"})
-                      sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                      
                     elsif text.include?("修二と彰") || text.include?("彰") || text.include?("あきら")
                       @users.yamapoint += 1
                        @users.save
@@ -345,32 +317,8 @@ class MessengerBotController < ActionController::Base
                       @users.yamapoint += 1
                        @users.save
                       sender.reply({text: "聞いてくれてるの！嬉しいな！ラジオの仕事って本当に楽しいんだ。"})
-                      sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-                     
-                   
-                      
-                    elsif text == "別れる"
-                    
-                          sender.reply({ "attachment":{
-                                        "type":"template",
-                                        "payload":{
-                                            "template_type":"button",
-                                            "text":"本当に俺と別れるの？",
-                                            "buttons":[
-                                                {
-                                                    "type":"postback",
-                                                    "title":"はい",
-                                                    "payload":"2"
-                                                },
-                                                {
-                                                    "type":"postback",
-                                                    "title":"いいえ",
-                                                    "payload":"3"
-                                                }
-                                            ]
-                                        }
-                                     }
-                                  })
+                            sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+                
                     elsif text == "テスト"
                           sender.reply({ text: "#{@profile['last_name']} #{@profile['first_name']}さんこんにちは！#{@profile['gender']}" })
                           
@@ -398,35 +346,110 @@ class MessengerBotController < ActionController::Base
                                         })
                     
                     elsif text == "ニックネーム"
-                        
-                        @@nick_name = URI.escape("https://chatbot-api.userlocal.jp/api/name?name=#{@profile['last_name']} #{@profile['first_name']}&key=#{USER_LOCAL_ID}")
-                        @@oknickname = JSON.load(open(@@nick_name).read)
-                        sender.reply({text: "#{@@oknickname['result']['nickname'].first}"})
+                       
+                        sender.reply({text: "#{@oknickname['result']['nickname'].first}"})
                             sender.reply({text: "今は好きしか言いたくない気分なんだ"})
                         
                     else
-                      
-                      @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
-                      @@response = JSON.load(open(@@localapi).read)
-                      sender.reply({ text: "#{@@response['result']}" })
+                        if rand(9) + 1 == 5
+                          sender.reply({ "attachment":{
+                                              "type":"template",
+                                              "payload":{
+                                                  "template_type":"button",
+                                                  "text":"ところてんと酢豚ならどっちが好き？",
+                                                  "buttons":[
+                                                      {
+                                                          "type":"postback",
+                                                          "title":"ところてん",
+                                                          "payload":"tokoroten"
+                                                      },
+                                                      {
+                                                          "type":"postback",
+                                                          "title":"選択肢おかしくない？",
+                                                          "payload":"X"
+                                                      },
+                                                      {
+                                                          "type":"postback",
+                                                          "title":"酢豚",
+                                                          "payload":"subuta"
+                                                      }
+                                                  ]
+                                              }
+                                           }
+                                        })
+                        elsif rand(9) + 1 == 2
+                            sender.reply({ "attachment":{
+                                                  "type":"template",
+                                                  "payload":{
+                                                      "template_type":"button",
+                                                      "text":"デートで行くなら映画館とディズニーランドどっちがいい？",
+                                                      "buttons":[
+                                                          {
+                                                              "type":"postback",
+                                                              "title":"映画館",
+                                                              "payload":"eiga"
+                                                          },
+                                                          {
+                                                              "type":"postback",
+                                                              "title":"ディズニーランド",
+                                                              "payload":"D"
+                                                          }
+                                                      ]
+                                                  }
+                                               }
+                                            })
+                        elsif rand(9) + 1 == 3
+                            sender.reply({ "attachment":{
+                                                  "type":"template",
+                                                  "payload":{
+                                                      "template_type":"button",
+                                                      "text":"海派？山派？",
+                                                      "buttons":[
+                                                          {
+                                                              "type":"postback",
+                                                              "title":"海派",
+                                                              "payload":"umi"
+                                                          },
+                                                          {
+                                                              "type":"postback",
+                                                              "title":"山派",
+                                                              "payload":"yama"
+                                                          }
+                                                      ]
+                                                  }
+                                               }
+                                            })
+                        
+                       
+                        else   
+                          @@localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
+                          @@response = JSON.load(open(@@localapi).read)
+                          sender.reply({ text: "#{@@response['result']}" })
+                        end
                       
                     end
+                
+                end
+                
+          elsif @users.userpoint == 5
+                
+                sender.reply({ text: "#{@@response['result']}" })
                     
                 
-          else
+          elsif @users.userpoint == 0
                       if text.include?("おはよう")
                         
                         sender.reply({ text: "おはよう" })
                         
                       
-                      elsif text == "かんな！"
+                      elsif text.include?("かんな")
                           sender.reply({ "attachment":{
                                       "type":"template",
                                       "payload":{
                                           "template_type":"generic",
                                           "elements":[
                                               {
-                                                  "title":"こんにちは！案内人のかんなです！",
+                                                  "title":"こんにちは！#{@profile['last_name']}さん！私は案内人のかんなです！",
                                                   "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
                                                   "subtitle":"DAC社内恋愛ゲームを始めましょう！",
                                                   "buttons":[
@@ -579,14 +602,43 @@ class MessengerBotController < ActionController::Base
        
         when "2"
             @users.userpoint = 0
+            @users.save
             sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
                         
         when "3"
              
-             sender.reply({ text: "脅かさないでくれよ・・・"})    
-                              
-         
+             sender.reply({ text: "脅かさないでくれよ・・・"})
+       
+        when "tokoroten"
+          @users.yamapoint += 1
+          @users.save
+          sender.reply({ text: "ところてんだよね！"})
+          sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+          
+        when "X"
+          sender.reply({ text: "確かにね笑"})
+        when "subuta"
+          @users.yamapoint -= 1
+          @users.save
+          sender.reply({ text: "そっかぁ・・・"})
+          sender.reply({text: "好感度が#{@users.yamapoint}に下がりました。"})
         
+        when "eiga"
+        
+        when "D"
+          sender.reply({ text: "そっかぁ・・・"})
+        when "yama"
+          @users.yamapoint += 1
+          @users.save
+          sender.reply({ text: "山もいいよね！"})
+          sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+
+        when "umi"
+          @users.yamapoint += 2
+          @users.save
+          sender.reply({ text: "海いいよね！"})
+          sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+
     end
   end
   

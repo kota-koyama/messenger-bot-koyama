@@ -373,7 +373,7 @@ class MessengerBotController < ActionController::Base
                                               "type":"template",
                                               "payload":{
                                                   "template_type":"button",
-                                                  "text":"ところてんと酢豚ならどっちが好き？",
+                                                  "text":"#{@oknickname['result']['nickname'].first}はところてんと酢豚ならどっちが好き？",
                                                   "buttons":[
                                                       {
                                                           "type":"postback",
@@ -399,7 +399,7 @@ class MessengerBotController < ActionController::Base
                                                   "type":"template",
                                                   "payload":{
                                                       "template_type":"button",
-                                                      "text":"デートで行くなら映画館とディズニーランドどっちがいい？",
+                                                      "text":"#{@oknickname['result']['nickname'].first}はデートで行くなら映画館とディズニーランドどっちがいい？",
                                                       "buttons":[
                                                           {
                                                               "type":"postback",
@@ -420,7 +420,7 @@ class MessengerBotController < ActionController::Base
                                                   "type":"template",
                                                   "payload":{
                                                       "template_type":"button",
-                                                      "text":"海派？山派？",
+                                                      "text":"#{@oknickname['result']['nickname'].first}は海派？山派？",
                                                       "buttons":[
                                                           {
                                                               "type":"postback",

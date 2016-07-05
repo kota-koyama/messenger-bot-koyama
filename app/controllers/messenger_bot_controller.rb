@@ -231,7 +231,7 @@ class MessengerBotController < ActionController::Base
                                 sender.reply({"attachment":{
                                       "type":"image",
                                       "payload":{
-                                      "url":"http://img1.gtimg.com/ent/pics/hv1/156/190/1300/84581106.jpg"
+                                      "url":"http://img-cdn.jg.jugem.jp/fe9/1778029/20150506_1062817.jpg"
                                                 }
                                             }
                                    })
@@ -337,7 +337,7 @@ class MessengerBotController < ActionController::Base
                                 sender.reply({"attachment":{
                                       "type":"image",
                                       "payload":{
-                                      "url":"http://img1.gtimg.com/ent/pics/hv1/156/190/1300/84581106.jpg"
+                                      "url":"http://img-cdn.jg.jugem.jp/fe9/1778029/20150506_1062817.jpg"
                                                 }
                                             }
                                    })
@@ -463,7 +463,7 @@ class MessengerBotController < ActionController::Base
                                 sender.reply({"attachment":{
                                       "type":"image",
                                       "payload":{
-                                      "url":"http://img1.gtimg.com/ent/pics/hv1/156/190/1300/84581106.jpg"
+                                      "url":"http://img-cdn.jg.jugem.jp/fe9/1778029/20150506_1062817.jpg"
                                                 }
                                             }
                                    })

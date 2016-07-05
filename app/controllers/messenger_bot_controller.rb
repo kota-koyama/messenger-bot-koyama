@@ -17,7 +17,7 @@ class MessengerBotController < ActionController::Base
             @localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
             @response = JSON.load(open(@localapi).read)
             @yamasita = "山P"||"山下"||"智久"||"やまP"||"やまピー"||"やまぴー"||"山ぴー"||"山ピー"||"やまp"||"山p"
-          
+            
           if User.find_by(user_id: user_id).nil?
             @users = User.new
             @users.user_id = user_id
@@ -438,7 +438,7 @@ class MessengerBotController < ActionController::Base
                                             })
                         
                        
-                        else   
+                        else
                           sender.reply({ text: "#{@response['result']}" })
                         end
                       

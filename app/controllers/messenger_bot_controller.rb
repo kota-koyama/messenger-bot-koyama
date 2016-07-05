@@ -579,25 +579,25 @@ class MessengerBotController < ActionController::Base
                                     ]
                                 },
                                 {
-                                    "title":"はるか",
+                                    "title":"翔君",
                                     "image_url":"http://img.laughy.jp/12186/default_7610bda4c74c6d51f83617e318f8e096.jpg",
-                                    "subtitle":"とんでもない天然…しかし、本気になったとき何でもすごい！",
+                                    "subtitle":"マイルドなイケメンだけど中身はクール！しょう君の多彩さにはみんなメロメロ。。。",
                                     "buttons":[
                                         {
                                             "type":"postback",
-                                            "title":"はるか一択！",
+                                            "title":"翔君一択！",
                                             "payload":"haruka_choice"
                                         }               
                                     ]
                                 },
                                 {
-                                    "title":"すず",
-                                    "image_url":"http://contents.oricon.co.jp/photo/img/1000/1794/detail/img660/1458092117458.jpg",
-                                    "subtitle":"とてもかわいい妹系！どうやってDACに入社したのか・・・",
+                                    "title":"松潤",
+                                    "image_url":"https://pbs.twimg.com/profile_images/378800000165087594/231b01998d0f996d81b030d0cc4f7b3a.png",
+                                    "subtitle":"凛々しさを感じるイケメン！情熱的なところや負けず嫌いなところにキュンとくる！",
                                     "buttons":[
                                         {
                                             "type":"postback",
-                                            "title":"すず一択！",
+                                            "title":"松潤一択",
                                             "payload":"suzu_choice"
                                         }               
                                     ]

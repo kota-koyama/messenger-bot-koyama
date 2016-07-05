@@ -448,11 +448,11 @@ class MessengerBotController < ActionController::Base
                 
           elsif @users.userpoint == 5
           
-            if text == "またね！"
-                @id = setTimeout(sender.reply({ text: "忙しいのかな？連絡ほしいな。。。"}) , 500)
+            #if text == "またね！"
+                #@id = setTimeout(sender.reply({ text: "忙しいのかな？連絡ほしいな。。。"}) , 500)
                 
-            else
-              clearTimeout(@id)
+            #else
+              #clearTimeout(@id)
                 if text =="好き"|| text.include?("#{@yamasita}好き") || text.include?("#{@yamasita}すき")||text.include?("#{@yamasita}スキ")||text.include?("好き")
                 
                 sender.reply({ text: "俺は#{@profile['first_name']}の事宇宙で一番好きだよ" })
@@ -509,7 +509,7 @@ class MessengerBotController < ActionController::Base
                     sender.reply({ text: "#{@response['result']}" })
                     end
                 end
-            end      
+            #end      
                 
           elsif @users.userpoint == 0
                       if text.include?("おはよう")

@@ -16,7 +16,7 @@ class MessengerBotController < ActionController::Base
             @oknickname = JSON.load(open(@nick_name).read)
             @localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
             @response = JSON.load(open(@localapi).read)
-            @yamasita = "山P"||"山下"||"智久"||"やまP"||"やまピー"||"やまぴー"||"山ぴー"||"山ピー"
+            @yamasita = "山P"||"山下"||"智久"||"やまP"||"やまピー"||"やまぴー"||"山ぴー"||"山ピー"||"やまp"||"山p"
           
           if User.find_by(user_id: user_id).nil?
             @users = User.new
@@ -70,7 +70,7 @@ class MessengerBotController < ActionController::Base
                                 })
                                         
                       else
-                        sender.reply({ text: "やまPだよ"})
+                        sender.reply({ text: "説明書と入力してみよう！"})
                       end  
                       
           elsif @users.userpoint == 2
@@ -109,16 +109,23 @@ class MessengerBotController < ActionController::Base
                            sender.reply({text: "これで説明は終わり！あとはあなたとやまPだけの時間になります！素敵な恋物語の始まり始まり！"})
                            
                       else
-                        sender.reply({text: "やまPだよ!!"})
+                        sender.reply({text: "５時９時と入力してみよう！"})
                       end
                       
           elsif @users.userpoint == 3 
-                  
+          
                 if  @users.yamapoint > 5
   
                       @users.userpoint = 4
                       @users.save
                         sender.reply({ text: "好感度が5を超えたので、やまPとの関係が発展しました！"})
+                        sender.reply({"attachment":{
+                                      "type":"image",
+                                      "payload":{
+                                      "url":"http://pr.cgiboy.com/image/483/960/11960483.jpeg"
+                                                }
+                                            }
+                                   })
                         sender.reply({text: "#{@profile['last_name']}と話してると楽しいな！仲良くなってきたしアダ名で呼びたいなぁ・・・#{@oknickname['result']['nickname'].first}って呼ぶね！"})
                 
                 else
@@ -535,7 +542,7 @@ class MessengerBotController < ActionController::Base
                             "elements":[
                                 {
                                     "title":"やまP",
-                                    "image_url":"http://userdisk.webry.biglobe.ne.jp/017/341/37/N000/000/018/144686495833049792180_151107hh.PNG",
+                                    "image_url":"http://geinou0999.up.seesaa.net/image/2009012914162327290.jpg",
                                     "subtitle":"至高のイケメン。テレビでは色々な顔を見せるアイドル。普段は何を考えているのかわからないミステリアスさが魅力",
                                     "buttons":[
                                         {
@@ -635,8 +642,8 @@ class MessengerBotController < ActionController::Base
           sender.reply({text: "性別なんてなんだって構わないさ！これからよろしく！"})
           sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
           sender.reply({text: "ナイス！やまPのハートをバッチリつかみ始めてるよ！"})
-          sender.reply({text: "二つ目は、やまPに関することを入力！場合によっては好感度UP or DOWN！"})
-          sender.reply({text: "やまPに「5時→9時」と送ってみよう！"})
+          sender.reply({text: "二つ目は、やまPに関することを調べて入力！場合によっては好感度UP or DOWN！"})
+          sender.reply({text: "今回は特別にキーワードを教えるよ！やまPに「5時→9時」と送ってみよう！"})
           
        
         when "2"

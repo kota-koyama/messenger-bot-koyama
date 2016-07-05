@@ -696,6 +696,12 @@ class MessengerBotController < ActionController::Base
           sender.reply({text: "好感度が#{@users.yamapoint}に下がりました。"})
         
         when "eiga"
+            
+          @users.yamapoint += 1
+          @users.save
+          sender.reply({ text: "やっぱり映画だよね！"})
+          sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
+          
         
         when "D"
           sender.reply({ text: "そっかぁ・・・"})

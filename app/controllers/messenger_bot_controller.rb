@@ -448,7 +448,7 @@ class MessengerBotController < ActionController::Base
                 end
                 
           elsif @users.userpoint == 5
-                setTimeout(@testplan , 5000)
+                #setTimeout(@testplan , 5000)
           
                 if text =="好き"|| text.include?("#{@yamasita}好き") || text.include?("#{@yamasita}すき")||text.include?("#{@yamasita}スキ")||text.include?("好き")
                 

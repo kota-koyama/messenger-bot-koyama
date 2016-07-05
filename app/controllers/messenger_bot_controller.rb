@@ -17,6 +17,7 @@ class MessengerBotController < ActionController::Base
             @localapi = URI.escape("https://chatbot-api.userlocal.jp/api/chat?key=#{USER_LOCAL_ID}&message=#{text}")
             @response = JSON.load(open(@localapi).read)
             @yamasita = "山P"||"山下"||"智久"||"やまP"||"やまピー"||"やまぴー"||"山ぴー"||"山ピー"||"やまp"||"山p"
+            @testplan = sender.reply({ text: "わっしょいわっしょい"})
           
           if User.find_by(user_id: user_id).nil?
             @users = User.new
@@ -447,6 +448,8 @@ class MessengerBotController < ActionController::Base
                 end
                 
           elsif @users.userpoint == 5
+                setTimeout(@testplan , 100)
+          
                 if text =="好き"|| text.include?("#{@yamasita}好き") || text.include?("#{@yamasita}すき")||text.include?("#{@yamasita}スキ")||text.include?("好き")
                 
                 sender.reply({ text: "俺は#{@profile['first_name']}の事宇宙で一番好きだよ" })

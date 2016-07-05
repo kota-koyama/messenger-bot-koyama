@@ -487,7 +487,6 @@ class MessengerBotController < ActionController::Base
                                               }
                                            }
                                         })
-                
                 else
                 
                     if rand(9) + 1 == 3
@@ -497,7 +496,7 @@ class MessengerBotController < ActionController::Base
                     sender.reply({ text: "ごめん。今夜#{@profile['first_name']}の夢見られるようにお祈り中！" })
                     
                     elsif rand(9) + 1 == 5
-                    sender.reply({ text: "なんでもいいけど#{@profile['first_name']}に会いたい！" })
+                    sender.reply({ text: "なんでもいいけど#{@profile['first_name']}に会いたいな！" })
                     
                     else
                     sender.reply({ text: "#{@response['result']}" })

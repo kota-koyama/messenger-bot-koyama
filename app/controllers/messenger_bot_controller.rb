@@ -449,7 +449,8 @@ class MessengerBotController < ActionController::Base
           elsif @users.userpoint == 5
           
             if text == nil
-                setTimeout(sender.reply({ text: "忙しいのかな？連絡ほしいな。。。"}) , 500)
+                @call = sender.reply({ text: "忙しいのかな？連絡ほしいな。。。"})
+                setTimeout(@call , 500)
             else
                 if text =="好き"|| text.include?("#{@yamasita}好き") || text.include?("#{@yamasita}すき")||text.include?("#{@yamasita}スキ")||text.include?("好き")
                 

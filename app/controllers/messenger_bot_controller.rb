@@ -580,7 +580,7 @@ class MessengerBotController < ActionController::Base
                                 },
                                 {
                                     "title":"翔君",
-                                    "image_url":"http://img.laughy.jp/12186/default_7610bda4c74c6d51f83617e318f8e096.jpg",
+                                    "image_url":"http://e.blog.xuite.net/e/4/6/7/25663626/blog_2465113/txt/56675990/2.jpg",
                                     "subtitle":"マイルドなイケメンだけど中身はクール！しょう君の多彩さにはみんなメロメロ。。。",
                                     "buttons":[
                                         {

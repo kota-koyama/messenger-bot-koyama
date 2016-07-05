@@ -228,6 +228,13 @@ class MessengerBotController < ActionController::Base
                             
                           elsif text == "別れる"
                           
+                                sender.reply({"attachment":{
+                                      "type":"image",
+                                      "payload":{
+                                      "url":"http://img1.gtimg.com/ent/pics/hv1/156/190/1300/84581106.jpg"
+                                                }
+                                            }
+                                   })
                                 sender.reply({ "attachment":{
                                               "type":"template",
                                               "payload":{
@@ -265,6 +272,13 @@ class MessengerBotController < ActionController::Base
                    @users.userpoint = 5
                       @users.save
                         sender.reply({ text: "好感度が10を超えたので、やまPとの関係が発展しました！"})
+                        sender.reply({"attachment":{
+                                      "type":"image",
+                                      "payload":{
+                                      "url":"http://img1.gtimg.com/ent/pics/hv1/156/190/1300/84581106.jpg"
+                                                }
+                                            }
+                                   })
                         sender.reply({text: "俺、#{@profile['first_name']}の事好きになっちゃった。"})
                 else
                   
@@ -320,7 +334,13 @@ class MessengerBotController < ActionController::Base
                           sender.reply({ text: "#{@profile['last_name']} #{@profile['first_name']}さんこんにちは！#{@profile['gender']}" })
                           
                     elsif text == "別れる"
-                          
+                                sender.reply({"attachment":{
+                                      "type":"image",
+                                      "payload":{
+                                      "url":"http://img1.gtimg.com/ent/pics/hv1/156/190/1300/84581106.jpg"
+                                                }
+                                            }
+                                   })
                                 sender.reply({ "attachment":{
                                               "type":"template",
                                               "payload":{
@@ -440,7 +460,13 @@ class MessengerBotController < ActionController::Base
                 sender.reply({ text: "#{@profile['first_name']}どうしたの？" })
                 
                 elsif text == "別れる"
-                          
+                                sender.reply({"attachment":{
+                                      "type":"image",
+                                      "payload":{
+                                      "url":"http://img1.gtimg.com/ent/pics/hv1/156/190/1300/84581106.jpg"
+                                                }
+                                            }
+                                   })
                                 sender.reply({ "attachment":{
                                               "type":"template",
                                               "payload":{

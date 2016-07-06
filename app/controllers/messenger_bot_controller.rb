@@ -6,7 +6,7 @@ class MessengerBotController < ActionController::Base
     require 'openssl'
     require 'net/http'
     
-  USER_LOCAL_ID = 'b8d9c896e319e72ff91a'
+  USER_LOCAL_ID = ''
 
       def message(event, sender)
             text = event['message']['text']

@@ -114,11 +114,11 @@ class MessengerBotController < ActionController::Base
                       
           elsif @users.userpoint == 3 
           
-                if  @users.yamapoint > 5
+                if  @users.yamapoint > 3
   
                       @users.userpoint = 4
                       @users.save
-                        sender.reply({ text: "好感度が5を超えたので、やまPとの関係が発展しました！"})
+                        sender.reply({ text: "好感度が3を超えたので、やまPとの関係が発展しました！"})
                         sender.reply({"attachment":{
                                       "type":"image",
                                       "payload":{
@@ -268,10 +268,10 @@ class MessengerBotController < ActionController::Base
          
           elsif @users.userpoint == 4
                     
-                if @users.yamapoint > 10
+                if @users.yamapoint > 6
                    @users.userpoint = 5
                       @users.save
-                        sender.reply({ text: "好感度が10を超えたので、やまPとの関係が発展しました！"})
+                        sender.reply({ text: "好感度が6を超えたので、やまPとの関係が発展しました！"})
                         sender.reply({"attachment":{
                                       "type":"image",
                                       "payload":{

@@ -34,12 +34,12 @@ class MessengerBotController < ActionController::Base
             
                       if text.include?("説明書")
                         sender.reply({ text: "これからやまPを攻略するよ！。方法は2つ！"})
-                        sender.reply({ text: "一つ目は、時々発生する選択肢イベント！やまPの質問に選択肢で回答！選択によって好感度UP or DOWN！"})
+                        sender.reply({ text: "一つ目は、時々発生する選択肢イベント！質問に選択肢で回答！選択によって好感度UP or DOWN！"})
                         sender.reply({ text: "それでは選択肢イベントをためしてみよう！"})
                         sender.reply({"attachment":{
                                       "type":"image",
                                       "payload":{
-                                      "url":"http://stat.ameba.jp/user_images/20091117/08/yamabiko141/59/32/j/o0635044310309754271.jpg"
+                                      "url":"http://im2-a.mbokimg.dena.ne.jp/1/7/149/237168149.1.jpg"
                                                 }
                                             }
                                    })
@@ -47,21 +47,21 @@ class MessengerBotController < ActionController::Base
                                       "type":"template",
                                       "payload":{
                                           "template_type":"button",
-                                          "text":"お前、男だったの!?",
+                                          "text":"安心してください",
                                           "buttons":[
                                               {
                                                   "type":"postback",
-                                                  "title":"はい",
+                                                  "title":"履いてますよ",
                                                   "payload":"1"
                                               },
                                               {
                                                   "type":"postback",
-                                                  "title":"なんとも言えない",
+                                                  "title":"古い",
                                                   "payload":"1"
                                               },
                                               {
                                                   "type":"postback",
-                                                  "title":"いいえ",
+                                                  "title":"履いてませんよ",
                                                   "payload":"1"
                                               }
                                           ]
@@ -200,7 +200,7 @@ class MessengerBotController < ActionController::Base
                             sender.reply({text: "車のCMってお金かけるんだなぁって思う"})
                             sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
                           
-                          elsif text.include?("テラフォーマーズ") || text.include?("テラホー") || text.include?("てらほーまー") || text.include?("てらふぉーまーず") || text.include?("ティン" ) || text.include?("武藤仁")
+                          elsif text.include?("テラフ���ーマーズ") || text.include?("テラホー") || text.include?("てらほーまー") || text.include?("てらふぉーまーず") || text.include?("ティン" ) || text.include?("武藤仁")
                             @users.yamapoint += 1
                              @users.save
                             sender.reply({"attachment":{
@@ -659,13 +659,12 @@ class MessengerBotController < ActionController::Base
           sender.reply({"attachment":{
             "type":"image",
             "payload":{
-            "url":"http://stat.ameba.jp/user_images/20091117/08/yamabiko141/59/32/j/o0635044310309754271.jpg"
+            "url":"http://stat.profile.ameba.jp/profile_images/20101020/00/ba/37/j/o024004001287503006881.jpg"
                       }
                   }
          })
-          sender.reply({text: "性別なんてなんだって構わないさ！これからよろしく！"})
+          sender.reply({text: "全ては君次第ってことだね・・・"})
           sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-          sender.reply({text: "ナイス！"})
           sender.reply({text: "二つ目は、やまPに関することを調べて入力！場合によっては好感度UP or DOWN！"})
           sender.reply({text: "今回は特別にキーワードを教えるよ！「5時→9時」と送ってみよう！"})
           

@@ -489,13 +489,13 @@ class MessengerBotController < ActionController::Base
                                         })
                 else
                 
-                    if rand(9) + 1 == 3
+                    if rand(12) + 1 == 3
                     sender.reply({ text: "今は好きしか言いたくない気分なんだ。#{@profile['first_name']}好きだよ。" })
                     
-                    elsif rand(9) + 1 == 4
+                    elsif rand(12) + 1 == 4
                     sender.reply({ text: "ごめん。今夜#{@profile['first_name']}の夢見られるようにお祈り中！" })
                     
-                    elsif rand(9) + 1 == 5
+                    elsif rand(12) + 1 == 5
                     sender.reply({ text: "なんでもいいけど#{@profile['first_name']}に会いたいな！" })
                     
                     else

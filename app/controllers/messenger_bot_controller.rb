@@ -509,16 +509,16 @@ class MessengerBotController < ActionController::Base
                         sender.reply({ text: "おはよう" })
                         
                       
-                      elsif text.include?("かんな")
+                      elsif text.include?("フジオカ")
                           sender.reply({ "attachment":{
                                       "type":"template",
                                       "payload":{
                                           "template_type":"generic",
                                           "elements":[
                                               {
-                                                  "title":"こんにちは！#{@profile['last_name']}さん！私は案内人のかんなです！",
-                                                  "image_url":"http://xn--ecki7azcr4a4m918z.asia/img/i9BNCbxO.jpeg",
-                                                  "subtitle":"DAC社内恋愛ゲームを始めましょう！",
+                                                  "title":"こんにちは！#{@profile['last_name']}さん！私は案内人のフジオカです！",
+                                                  "image_url":"http://mimiyori.biz/cms/wp-content/uploads/2016/01/160128_03.jpg",
+                                                  "subtitle":"素敵な恋を始めましょう！",
                                                   "buttons":[
                                                       {
                                                           "type":"postback",
@@ -539,7 +539,7 @@ class MessengerBotController < ActionController::Base
                                         
                                   
                       else
-                            sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！#{@users.userpoint}"})
+                            sender.reply({ text: "今は言葉を返してくれる人がいないよ！「フジオカ」と呼んでみて！#{@users.userpoint}"})
                       end
                       
           end
@@ -610,7 +610,7 @@ class MessengerBotController < ActionController::Base
         sender.reply({"attachment":{
             "type":"image",
             "payload":{
-            "url":"https://pbs.twimg.com/profile_images/705260772243320832/cLl8XRdV.jpg"
+            "url":"http://samurai-hiroshi.com/english/img/zan.jpg"
                       }
                   }
          })
@@ -665,15 +665,15 @@ class MessengerBotController < ActionController::Base
          })
           sender.reply({text: "性別なんてなんだって構わないさ！これからよろしく！"})
           sender.reply({text: "好感度が#{@users.yamapoint}に上がりました。"})
-          sender.reply({text: "ナイス！やまPのハートをバッチリつかみ始めてるよ！"})
+          sender.reply({text: "ナイス！"})
           sender.reply({text: "二つ目は、やまPに関することを調べて入力！場合によっては好感度UP or DOWN！"})
-          sender.reply({text: "今回は特別にキーワードを教えるよ！やまPに「5時→9時」と送ってみよう！"})
+          sender.reply({text: "今回は特別にキーワードを教えるよ！「5時→9時」と送ってみよう！"})
           
        
         when "2"
             @users.userpoint = 0
             @users.save
-            sender.reply({ text: "今は言葉を返してくれる人がいないよ！「かんな！」と呼んでみて！"})
+            sender.reply({ text: "今は言葉を返してくれる人がいないよ！「フジオカ」と呼んでみて！"})
                         
         when "3"
              
